@@ -44,10 +44,11 @@ workflow_status:
     name: "Planning"
     workflows:
       - id: "prd"
-        status: "required"
+        status: "_bmad-output/prd.md"
         agent: "pm"
         command: "create-prd"
         output: "Product Requirements Document with FRs and NFRs"
+        completed: "2025-12-25"
 
       - id: "create-ux-design"
         status: "conditional"
@@ -61,16 +62,18 @@ workflow_status:
     name: "Solutioning"
     workflows:
       - id: "create-architecture"
-        status: "required"
+        status: "_bmad-output/architecture.md"
         agent: "architect"
         command: "create-architecture"
         output: "System architecture document"
+        completed: "2025-12-25"
 
       - id: "create-epics-and-stories"
-        status: "required"
+        status: "_bmad-output/project-planning-artifacts/epics.md"
         agent: "pm"
         command: "create-epics-and-stories"
-        note: "Break down PRD into implementable epics and stories"
+        output: "4 epics, 13 stories covering all 25 FRs"
+        completed: "2025-12-25"
 
       - id: "test-design"
         status: "recommended"
