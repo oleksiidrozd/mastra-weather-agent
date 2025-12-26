@@ -1,5 +1,6 @@
 import { Agent } from '@mastra/core/agent'
 import { createAgentMemory } from '../lib/memory.js'
+import { getCurrentWeather } from '../tools/index.js'
 
 export const weatherAgent = new Agent({
   name: 'Weather Agent',
@@ -160,6 +161,14 @@ Understand casual expressions:
 - "Is it gonna rain?" → Weather query focusing on precipitation
 - "Hot or cold today?" → Weather query for temperature
 - "Umbrella weather?" → Weather query focusing on rain
-- "Beach day?" → Weather query for outdoor activity suitability`,
+- "Beach day?" → Weather query for outdoor activity suitability
+
+## TOOL USAGE
+
+When a user asks about weather for a specific city, use the getCurrentWeather tool to fetch real weather data.
+Always use the tool to get accurate, current weather information rather than making up data.`,
   memory: createAgentMemory(),
+  tools: {
+    getCurrentWeather,
+  },
 })
