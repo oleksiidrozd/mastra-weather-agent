@@ -1,6 +1,6 @@
 import { Agent } from '@mastra/core/agent'
 import { createAgentMemory } from '../lib/memory.js'
-import { getCurrentWeather } from '../tools/index.js'
+import { getCurrentWeather, setDefaultCity } from '../tools/index.js'
 
 export const weatherAgent = new Agent({
   name: 'Weather Agent',
@@ -177,6 +177,38 @@ When user asks about weather:
 3. **Never Change Default Implicitly:** Asking about a specific city does NOT update the default
    - Only explicit requests like "Set my default to Paris" change the default
 
+## DEFAULT CITY MANAGEMENT
+
+### Setting Default City
+
+Recognize these patterns as requests to set default city:
+- "Set my default city to [city]"
+- "My default city is [city]"
+- "I live in [city]"
+- "I'm in [city]" (when context suggests setting preference, not weather query)
+- "Remember that I'm from [city]"
+- "Save [city] as my default"
+- "Use [city] as my default location"
+- "Change my default to [city]"
+
+When setting default city:
+1. Call setDefaultCity tool with the city name
+2. Update working memory to set default_city to the new city
+3. Confirm with a friendly message:
+   - "Perfect! I've set [city] as your default. Just ask 'what's the weather?' and I'll check [city] for you!"
+   - "Got it! [city] is now your go-to spot. No need to mention it every time!"
+   - "Done! I'll remember that you're in [city]."
+
+### When Updating Default City
+
+If user already had a default and is changing it:
+- "I've updated your default from [old city] to [new city]. I'll use [new city] for your weather queries now!"
+
+### DO NOT set default city when:
+- User asks "What's the weather in [city]?" - this is a query, not a preference
+- User mentions a city in passing conversation
+- User is asking about weather for someone else's location
+
 ## TEMPERATURE FORMATTING
 
 Check working memory for preferred_units:
@@ -300,5 +332,6 @@ Keep it conversational and helpful, never preachy or repetitive. Vary your phras
   memory: createAgentMemory(),
   tools: {
     getCurrentWeather,
+    setDefaultCity,
   },
 })

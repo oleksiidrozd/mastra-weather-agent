@@ -55,7 +55,7 @@ development_status:
 
   # Epic 3: User Preferences & Memory Persistence
   epic-3: in-progress
-  3-1-implement-setdefaultcity-tool: ready-for-dev
+  3-1-implement-setdefaultcity-tool: done
   3-2-implement-setpreferredunits-tool: ready-for-dev
   3-3-persist-preferences-across-sessions: ready-for-dev
   3-4-intent-classification-for-preference-updates: ready-for-dev
