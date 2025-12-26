@@ -40,8 +40,8 @@ story_location: "_bmad-output/implementation-artifacts/"
 development_status:
   # Epic 1: CLI Chat Foundation
   epic-1: in-progress
-  1-1-project-setup-and-mastra-agent-initialization: review
-  1-2-implement-streaming-cli-chat-interface: ready-for-dev
+  1-1-project-setup-and-mastra-agent-initialization: done
+  1-2-implement-streaming-cli-chat-interface: done
   1-3-implement-agent-persona-and-response-formatting: ready-for-dev
   1-4-implement-intent-classification-and-edge-case-handling: ready-for-dev
   epic-1-retrospective: optional

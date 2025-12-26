@@ -10,7 +10,8 @@
     "test:coverage": "vitest run --coverage",
     "dev": "mastra dev",
     "build": "mastra build",
-    "start": "mastra start"
+    "start": "mastra start",
+    "cli": "npx tsx src/cli/index.ts"
   },
   "keywords": [],
   "author": "",

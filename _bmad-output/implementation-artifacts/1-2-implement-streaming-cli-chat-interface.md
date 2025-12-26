@@ -1,6 +1,6 @@
 # Story 1.2: Implement Streaming CLI Chat Interface
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -37,36 +37,36 @@ So that **I see tokens appear immediately as they're generated**.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Create the weather agent definition (AC: #4, #5)
-  - [ ] Create `src/mastra/agents/weatherAgent.ts`
-  - [ ] Configure model: `google/gemini-2.5-flash`
-  - [ ] Set `maxSteps: 5`
-  - [ ] Write weather-focused persona system prompt
-  - [ ] Import and use `createAgentMemory()` from index.ts
+- [x] Task 1: Create the weather agent definition (AC: #4, #5)
+  - [x] Create `src/mastra/agents/weatherAgent.ts`
+  - [x] Configure model: `google/gemini-2.5-flash`
+  - [x] Set `maxSteps: 5` (passed at call time per Mastra API)
+  - [x] Write weather-focused persona system prompt
+  - [x] Import and use `createAgentMemory()` from lib/memory.js
 
-- [ ] Task 2: Register agent with Mastra instance (AC: #4)
-  - [ ] Update `src/mastra/index.ts` to include weatherAgent in agents config
-  - [ ] Export the agent for CLI usage
+- [x] Task 2: Register agent with Mastra instance (AC: #4)
+  - [x] Update `src/mastra/index.ts` to include weatherAgent in agents config
+  - [x] Export the agent for CLI usage
 
-- [ ] Task 3: Create CLI entry point (AC: #1, #2, #3)
-  - [ ] Create `src/cli/index.ts`
-  - [ ] Implement readline interface for user input
-  - [ ] Generate UUID for thread ID on startup
-  - [ ] Use fixed resource ID `"cli-user"` for working memory
-  - [ ] Stream agent responses token-by-token to stdout
+- [x] Task 3: Create CLI entry point (AC: #1, #2, #3)
+  - [x] Create `src/cli/index.ts`
+  - [x] Implement readline interface for user input
+  - [x] Generate UUID for thread ID on startup
+  - [x] Use fixed resource ID `"cli-user"` for working memory
+  - [x] Stream agent responses token-by-token to stdout
 
-- [ ] Task 4: Implement graceful exit handling (AC: #2, #3)
-  - [ ] Handle "exit" and "quit" commands
-  - [ ] Handle SIGINT (Ctrl+C)
-  - [ ] Close readline interface on exit
+- [x] Task 4: Implement graceful exit handling (AC: #2, #3)
+  - [x] Handle "exit" and "quit" commands
+  - [x] Handle SIGINT (Ctrl+C)
+  - [x] Close readline interface on exit
 
-- [ ] Task 5: Add npm script for CLI (AC: #1)
-  - [ ] Add `"cli": "npx tsx src/cli/index.ts"` to package.json scripts
+- [x] Task 5: Add npm script for CLI (AC: #1)
+  - [x] Add `"cli": "npx tsx src/cli/index.ts"` to package.json scripts
 
-- [ ] Task 6: Verify streaming works (AC: #1)
-  - [ ] Run `npm run cli`
-  - [ ] Send a test message and observe token-by-token streaming
-  - [ ] Verify exit commands work
+- [x] Task 6: Verify streaming works (AC: #1)
+  - [x] Run `npm run cli`
+  - [x] Send a test message and observe token-by-token streaming
+  - [x] Verify exit commands work
 
 ## Dev Notes
 
@@ -286,15 +286,27 @@ Add to `package.json` scripts:
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled by dev agent after implementation_
+- Created `src/mastra/agents/weatherAgent.ts` with Gemini 2.5 Flash model and weather persona
+- Moved `storage` and `createAgentMemory` to `src/mastra/lib/memory.ts` to avoid circular imports
+- Model format is string `"google/gemini-2.5-flash"` (not object as in story Dev Notes)
+- `maxSteps` is passed at stream() call time, not in AgentConfig (API difference from story notes)
+- Added `import 'dotenv/config'` in CLI to load environment variables
+- Verified streaming works: "hello" → immediate streaming response with emoji
+- Exit/quit commands work correctly
+- SIGINT handler in place for Ctrl+C
 
 ### File List
 
-- [ ] `src/mastra/agents/weatherAgent.ts` - Created
-- [ ] `src/mastra/index.ts` - Modified (register agent)
-- [ ] `src/cli/index.ts` - Created
-- [ ] `package.json` - Modified (add cli script)
+- [x] `src/mastra/agents/weatherAgent.ts` - Created
+- [x] `src/mastra/lib/memory.ts` - Created (extracted from index.ts)
+- [x] `src/mastra/index.ts` - Modified (register agent, import from lib/memory.js)
+- [x] `src/cli/index.ts` - Created
+- [x] `package.json` - Modified (add cli script)
+
+### Change Log
+
+- 2025-12-26: Story 1.2 implemented - Streaming CLI with weather agent
