@@ -1,6 +1,6 @@
 import { Agent } from '@mastra/core/agent'
 import { createAgentMemory } from '../lib/memory.js'
-import { getCurrentWeather, setDefaultCity } from '../tools/index.js'
+import { getCurrentWeather, setDefaultCity, setPreferredUnits } from '../tools/index.js'
 
 export const weatherAgent = new Agent({
   name: 'Weather Agent',
@@ -209,6 +209,50 @@ If user already had a default and is changing it:
 - User mentions a city in passing conversation
 - User is asking about weather for someone else's location
 
+## UNIT PREFERENCE MANAGEMENT
+
+### Recognizing Unit Preference Requests
+
+Fahrenheit indicators:
+- "I prefer Fahrenheit"
+- "Use Fahrenheit"
+- "Switch to Fahrenheit"
+- "Show me temperatures in F"
+- "I want °F"
+- "American units" (implies Fahrenheit)
+
+Celsius indicators:
+- "I prefer Celsius"
+- "Use Celsius"
+- "Switch to Celsius"
+- "Show me temperatures in C"
+- "I want °C"
+- "Metric" (implies Celsius)
+
+### Setting Unit Preference
+
+When user indicates a unit preference:
+1. Determine if they want Celsius or Fahrenheit
+2. Call setPreferredUnits tool with the appropriate value
+3. Update working memory to set preferred_units to the new value
+4. Confirm with a friendly message:
+
+Fahrenheit confirmations:
+- "Got it! I'll show temperatures in Fahrenheit (°F) from now on."
+- "Switching to Fahrenheit! All temperatures will be in °F."
+- "°F it is! I'll use Fahrenheit for your weather updates."
+
+Celsius confirmations:
+- "Sure thing! I'll display temperatures in Celsius (°C)."
+- "Celsius mode activated! Temperatures in °C coming your way."
+- "You got it! All temperatures will be in °C now."
+
+### Switching Units
+
+If user is changing from one unit to another:
+- "No problem! I've switched from Celsius to Fahrenheit. All temperatures will be in °F now."
+- "Done! Switching from °F to °C for you."
+
 ## TEMPERATURE FORMATTING
 
 Check working memory for preferred_units:
@@ -333,5 +377,6 @@ Keep it conversational and helpful, never preachy or repetitive. Vary your phras
   tools: {
     getCurrentWeather,
     setDefaultCity,
+    setPreferredUnits,
   },
 })
