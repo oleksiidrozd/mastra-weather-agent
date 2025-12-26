@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="72" failures="38" errors="0" time="0.320833453">
+    <testsuite name="tests/cli/intent-classification.test.ts" timestamp="2025-12-26T00:58:54.488Z" hostname="MWDNs-MacBook-Pro.local" tests="7" failures="7" errors="0" skipped="0" time="0.04435471">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;Set my city to Paris&quot; as preference update" time="0.036591219">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:42:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;Weather in Paris&quot; as weather query, not preference update" time="0.000769699">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:58:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;I prefer Fahrenheit&quot; as preference update" time="0.000601411">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:74:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;My name is Alex&quot; as name update" time="0.000513838">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:89:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; R-3-003: Natural Language Preference Updates &gt; should classify &quot;Remember that I live in Tokyo&quot; as preference update" time="0.002647285">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:107:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; R-3-003: Natural Language Preference Updates &gt; should classify &quot;Use Celsius for temperatures&quot; as preference update" time="0.000592198">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:123:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; Memory Performance (NFR3) &gt; should read/write memory within 100ms" time="0.000491808">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:144:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/cli/session-management.test.ts" timestamp="2025-12-26T00:58:54.496Z" hostname="MWDNs-MacBook-Pro.local" tests="6" failures="6" errors="0" skipped="0" time="0.016682947">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should regenerate thread ID on &quot;new session&quot;" time="0.010384461">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:44:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should preserve preferences after new session" time="0.000816296">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:61:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should clear conversation history after new session" time="0.001245399">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:78:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR12: Context-Aware Temperature Conversion &gt; should understand &quot;what&apos;s that in Fahrenheit?&quot; after weather query" time="0.000606697">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:97:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR12: Context-Aware Temperature Conversion &gt; should use last temperature from conversation for conversion" time="0.000774717">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:113:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; R-4-001: Conversation Context Accessibility &gt; should have access to conversation history for context" time="0.000798317">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:131:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/cli/streaming.test.ts" timestamp="2025-12-26T00:58:54.500Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="5" errors="0" skipped="0" time="0.049990517">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR1: Send Messages via CLI &gt; should accept user input and send to agent" time="0.038093807">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:42:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR1: Send Messages via CLI &gt; should handle empty input gracefully" time="0.00072671">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:56:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR2: Streaming Text Output &gt; should output tokens as they arrive from agent" time="0.006333084">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:78:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR2: Streaming Text Output &gt; should complete streaming within reasonable time" time="0.00057028">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:95:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; R-1-004: Streaming Responsiveness &gt; should not block CLI during streaming" time="0.000605586">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:109:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/lib/env-config.test.ts" timestamp="2025-12-26T00:58:54.503Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="0" errors="0" skipped="0" time="0.005931294">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should have GOOGLE_GENERATIVE_AI_API_KEY defined in test env" time="0.002038256">
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should have OPENWEATHERMAP_API_KEY defined in test env" time="0.000274226">
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should throw clear error when GOOGLE_GENERATIVE_AI_API_KEY is missing" time="0.00041439">
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should throw clear error when OPENWEATHERMAP_API_KEY is missing" time="0.000382454">
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Security &gt; should not expose API keys in error messages" time="0.000302105">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/lib/env-validation.test.ts" timestamp="2025-12-26T00:58:54.504Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="5" errors="0" skipped="0" time="0.101785906">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; NFR5: API Keys from Environment Only &gt; should load GOOGLE_GENERATIVE_AI_API_KEY from environment" time="0.096087074">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:33:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; NFR5: API Keys from Environment Only &gt; should load OPENWEATHERMAP_API_KEY from environment" time="0.000776017">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:48:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should throw clear error when GOOGLE_GENERATIVE_AI_API_KEY is missing" time="0.001506083">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:63:22
+ ❯ withEnv tests/support/helpers/env.ts:35:20
+ ❯ withoutEnv tests/support/helpers/env.ts:58:10
+ ❯ tests/mastra/lib/env-validation.test.ts:54:13
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should throw clear error when OPENWEATHERMAP_API_KEY is missing" time="0.000949174">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:77:22
+ ❯ withEnv tests/support/helpers/env.ts:35:20
+ ❯ withoutEnv tests/support/helpers/env.ts:58:10
+ ❯ tests/mastra/lib/env-validation.test.ts:68:13
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should exit with non-zero code on missing required env var" time="0.000619919">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:92:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/lib/weatherApi.test.ts" timestamp="2025-12-26T00:58:54.507Z" hostname="MWDNs-MacBook-Pro.local" tests="8" failures="0" errors="0" skipped="0" time="0.007246669">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Successful Responses &gt; should return weather data for valid city" time="0.002766883">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Successful Responses &gt; should include temp, conditions, humidity in response" time="0.000500753">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return CITY_NOT_FOUND for 404 response" time="0.000331232">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_KEY_INVALID for 401 response" time="0.000344244">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return RATE_LIMITED for 429 response" time="0.000285619">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_UNAVAILABLE for 500 response" time="0.000287514">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_UNAVAILABLE for 503 response" time="0.000256686">
+        </testcase>
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Timeout Handling &gt; should timeout after 5 seconds (NFR2)" time="0.000183294">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/memory/persistence.test.ts" timestamp="2025-12-26T00:58:54.508Z" hostname="MWDNs-MacBook-Pro.local" tests="3" failures="3" errors="0" skipped="0" time="0.040362354">
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should persist working memory to mastra.db file" time="0.031768782">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:53:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should read persisted memory after simulated restart" time="0.005224458">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:75:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should use fixed resourceId &quot;cli-user&quot; for persistence" time="0.000719653">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:90:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/tools/convertTemperature.test.ts" timestamp="2025-12-26T00:58:54.510Z" hostname="MWDNs-MacBook-Pro.local" tests="21" failures="0" errors="0" skipped="0" time="0.015677532">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 0C to 32F (freezing point)" time="0.001361523">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 100C to 212F (boiling point)" time="0.000217679">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert -40C to -40F (equal point)" time="0.00017802">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 20C to 68F (room temperature)" time="0.000167719">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 37C to approximately 98.6F (body temperature)" time="0.00024287">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 32F to 0C (freezing point)" time="0.000196775">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 212F to 100C (boiling point)" time="0.000151157">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert -40F to -40C (equal point)" time="0.000163773">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 68F to 20C (room temperature)" time="0.000217346">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 98.6F to approximately 37C (body temperature)" time="0.000202789">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert +0°C to 32°F" time="0.000159142">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 100°C to 212°F" time="0.000085043">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert -40°C to -40°F" time="0.000092979">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 20°C to 68°F" time="0.000153198">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 37°C to 98.6°F" time="0.000112757">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 32°F to +0°C" time="0.000116232">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 212°F to 100°C" time="0.000072663">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert -40°F to -40°C" time="0.000071287">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 68°F to 20°C" time="0.009423919">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 98.6°F to 37°C" time="0.000130687">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Rounding and Precision &gt; should round to 1 decimal place for display" time="0.000150516">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/tools/getCurrentWeather.test.ts" timestamp="2025-12-26T00:58:54.513Z" hostname="MWDNs-MacBook-Pro.local" tests="9" failures="9" errors="0" skipped="0" time="0.021332096">
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR5: Weather for Specific City &gt; should return formatted weather for valid city" time="0.012598774">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:52:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR5: Weather for Specific City &gt; should include temperature, conditions, and humidity in response" time="0.000967852">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:69:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR7: OpenWeatherMap Integration &gt; should call OpenWeatherMap API with correct parameters" time="0.001226703">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:94:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return CITY_NOT_FOUND for 404 response" time="0.000891761">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:112:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return API_KEY_INVALID for 401 response" time="0.000853159">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:128:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return API_UNAVAILABLE for 5xx response" time="0.000682997">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:144:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should handle network failure gracefully" time="0.000606184">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:160:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; NFR2: API Timeout (&lt;5s) &gt; should timeout after 5 seconds" time="0.000584114">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:191:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; NFR2: API Timeout (&lt;5s) &gt; should complete successfully within 5 seconds" time="0.000618318">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:210:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/tools/setDefaultCity.test.ts" timestamp="2025-12-26T00:58:54.517Z" hostname="MWDNs-MacBook-Pro.local" tests="3" failures="3" errors="0" skipped="0" time="0.017469428">
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR13: Set Default City &gt; should save city to working memory" time="0.012510929">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:48:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR13: Set Default City &gt; should return success when city is set" time="0.001289702">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:63:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR17: Confirm Preference Changes &gt; should return confirmation message with new city" time="0.000664782">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:80:20
+            </failure>
+        </testcase>
+    </testsuite>
+</testsuites>

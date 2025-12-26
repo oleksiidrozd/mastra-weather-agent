@@ -1,0 +1,235 @@
+# Test Suite Documentation
+
+**Project:** mastra-weather-agent
+**Framework:** Vitest
+**Date:** 2025-12-26
+
+---
+
+## Quick Start
+
+### Prerequisites
+
+- Node.js >= 22.13.0
+- npm or yarn
+
+### Installation
+
+```bash
+npm install
+```
+
+### Running Tests
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode (development)
+npm run test:watch
+
+# Run tests with UI
+npm run test:ui
+
+# Run tests with coverage
+npm run test:coverage
+```
+
+---
+
+## Directory Structure
+
+```
+tests/
+├── mastra/                    # Tests mirroring src/mastra/
+│   ├── tools/                 # Tool tests (getCurrentWeather, etc.)
+│   │   └── convertTemperature.test.ts
+│   └── lib/                   # Library tests
+│       ├── env-config.test.ts
+│       └── weatherApi.test.ts
+├── cli/                       # CLI-specific tests
+│   └── (streaming, input handling)
+├── support/                   # Test infrastructure
+│   ├── fixtures/              # Test data fixtures
+│   │   ├── index.ts
+│   │   ├── weather.ts
+│   │   └── memory.ts
+│   ├── helpers/               # Utility functions
+│   │   └── env.ts
+│   ├── mocks/                 # Mock implementations
+│   │   └── weatherApi.ts
+│   └── setup.ts               # Global test setup
+└── README.md                  # This file
+```
+
+---
+
+## Test Organization by Epic
+
+### Epic 1: CLI Chat Foundation
+
+| Test File | Coverage |
+|-----------|----------|
+| `mastra/lib/env-config.test.ts` | API key loading, security |
+| `cli/streaming.test.ts` | Streaming responses (TODO) |
+| `cli/exit.test.ts` | Exit/quit commands (TODO) |
+
+### Epic 2: Weather Information Retrieval
+
+| Test File | Coverage |
+|-----------|----------|
+| `mastra/lib/weatherApi.test.ts` | API client, error codes |
+| `mastra/tools/getCurrentWeather.test.ts` | Weather tool (TODO) |
+
+### Epic 3: User Preferences & Memory
+
+| Test File | Coverage |
+|-----------|----------|
+| `mastra/tools/setDefaultCity.test.ts` | Default city tool (TODO) |
+| `mastra/tools/setPreferredUnits.test.ts` | Units tool (TODO) |
+| `mastra/memory/persistence.test.ts` | Memory persistence (TODO) |
+
+### Epic 4: Temperature Conversion & Session Management
+
+| Test File | Coverage |
+|-----------|----------|
+| `mastra/tools/convertTemperature.test.ts` | Temperature conversion |
+| `cli/session.test.ts` | New session command (TODO) |
+
+---
+
+## Testing Patterns
+
+### 1. Fixtures
+
+Located in `support/fixtures/`. Use for consistent test data.
+
+```typescript
+import { weatherFixtures, temperatureFixtures } from '../support/fixtures';
+
+describe('Weather', () => {
+  it.each(weatherFixtures.validCities)('should get weather for %s', async (city) => {
+    // Test implementation
+  });
+});
+```
+
+### 2. Mocks
+
+Located in `support/mocks/`. Use for external API responses.
+
+```typescript
+import { createMockFetch, mockWeatherSuccess } from '../support/mocks/weatherApi';
+
+it('should fetch weather', async () => {
+  global.fetch = createMockFetch(mockWeatherSuccess, 200);
+  // Test implementation
+});
+```
+
+### 3. Environment Helpers
+
+Located in `support/helpers/env.ts`. Use for environment variable testing.
+
+```typescript
+import { withEnv, withoutEnv } from '../support/helpers/env';
+
+it('should handle missing API key', async () => {
+  await withoutEnv(['OPENWEATHERMAP_API_KEY'], async () => {
+    // API key is undefined here
+  });
+});
+```
+
+---
+
+## Best Practices
+
+### Test Naming
+
+- Use descriptive names: `should return CITY_NOT_FOUND for invalid city`
+- Group related tests in `describe` blocks
+- Use `it.each` for parameterized tests
+
+### Test Isolation
+
+- Each test should be independent
+- Use `beforeEach`/`afterEach` for setup/cleanup
+- Reset mocks between tests with `vi.resetAllMocks()`
+
+### Assertions
+
+- Be explicit: `expect(result.success).toBe(true)`
+- Use `toBeCloseTo` for floating-point comparisons
+- Check edge cases (empty, null, undefined)
+
+### Coverage Goals
+
+| Priority | Unit Coverage | Integration Coverage |
+|----------|---------------|---------------------|
+| P0 | >90% | >80% |
+| P1 | >80% | >60% |
+| P2 | >60% | >40% |
+| P3 | Best effort | Best effort |
+
+---
+
+## CI Integration
+
+Tests run automatically on:
+
+- Pull request to `main`
+- Push to `main` branch
+
+### GitHub Actions (example)
+
+```yaml
+- name: Run tests
+  run: npm test
+
+- name: Upload coverage
+  uses: codecov/codecov-action@v3
+  with:
+    files: ./coverage/coverage-final.json
+```
+
+---
+
+## Debugging
+
+### Run single test file
+
+```bash
+npx vitest run tests/mastra/tools/convertTemperature.test.ts
+```
+
+### Run tests matching pattern
+
+```bash
+npx vitest run -t "should convert"
+```
+
+### Debug mode
+
+```bash
+npx vitest --inspect-brk
+```
+
+### UI mode (visual debugging)
+
+```bash
+npm run test:ui
+```
+
+---
+
+## Related Documents
+
+- Test Designs: [test-designs/](_bmad-output/test-designs/)
+- Architecture: [architecture.md](_bmad-output/architecture.md)
+- Epics: [epics.md](_bmad-output/project-planning-artifacts/epics.md)
+
+---
+
+**Generated by**: BMad TEA Agent - Test Framework Scaffold
+**Version**: 4.0 (BMad v6)
