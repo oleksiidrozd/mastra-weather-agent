@@ -8,6 +8,7 @@ export const storage = new LibSQLStore({
 })
 
 // Memory configuration with working memory schema
+// scope: 'resource' ensures preferences persist across sessions (threads)
 export const createAgentMemory = () => new Memory({
   storage,
   options: {
@@ -15,6 +16,7 @@ export const createAgentMemory = () => new Memory({
     workingMemory: {
       enabled: true,
       schema: workingMemorySchema,
+      scope: 'resource',
     },
   },
 })

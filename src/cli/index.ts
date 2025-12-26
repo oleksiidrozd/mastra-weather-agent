@@ -53,7 +53,7 @@ async function main() {
 
     if (lowerTrimmed === 'new session') {
       threadId = randomUUID()
-      console.log('Started new session. Previous conversation history cleared.')
+      console.log('Started new session. Conversation history cleared, but your preferences are saved!')
       continue
     }
 

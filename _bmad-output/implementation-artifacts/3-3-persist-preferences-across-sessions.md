@@ -1,6 +1,6 @@
 # Story 3.3: Persist Preferences Across Sessions
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -35,30 +35,31 @@ So that **I don't have to reconfigure my settings every time**.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Verify LibSQL persistence works (AC: #1, #3)
-  - [ ] Confirm `mastra.db` file is created on first memory write
-  - [ ] Verify preferences survive CLI restart
-  - [ ] Test that data persists in file
+- [x] Task 1: Verify LibSQL persistence works (AC: #1, #3)
+  - [x] Confirmed `mastra.db` file exists (98304 bytes)
+  - [x] Verified preferences survive CLI restart
+  - [x] Added `scope: 'resource'` to working memory config for cross-session persistence
 
-- [ ] Task 2: Implement user name storage (AC: #2, #5)
-  - [ ] Add recognition for "My name is..." patterns
-  - [ ] Store user_name in working memory
-  - [ ] Use name in greetings when available
+- [x] Task 2: Implement user name storage (AC: #2, #5)
+  - [x] Added USER NAME MANAGEMENT section to agent instructions
+  - [x] Recognition patterns: "My name is...", "I'm...", "Call me..."
+  - [x] Store user_name in working memory
+  - [x] Agent acknowledges with personal touch
 
-- [ ] Task 3: Update CLI for returning user greeting (AC: #2, #5)
-  - [ ] On startup, check if working memory has user_name
-  - [ ] If returning user, personalize greeting
-  - [ ] Show their saved preferences info
+- [x] Task 3: Update CLI for returning user greeting (AC: #2, #5)
+  - [x] Agent-based greeting approach (agent checks working memory)
+  - [x] Added Returning User Greeting section to instructions
+  - [x] Agent uses name in responses and greetings
 
-- [ ] Task 4: Verify "new session" preserves working memory (AC: #4)
-  - [ ] Confirm thread ID reset clears conversation history
-  - [ ] Confirm resource ID stays same, preserving working memory
-  - [ ] Test preferences available after "new session"
+- [x] Task 4: Verify "new session" preserves working memory (AC: #4)
+  - [x] Updated "new session" message: "...but your preferences are saved!"
+  - [x] Confirmed resourceId stays constant, threadId changes
+  - [x] Working memory persists across "new session"
 
-- [ ] Task 5: Test persistence flow (AC: #1-5)
-  - [ ] Set preferences → exit → restart → verify
-  - [ ] Test returning user greeting
-  - [ ] Test "new session" doesn't lose preferences
+- [x] Task 5: Test persistence flow (AC: #1-5)
+  - [x] "My name is Alex" → "Nice to meet you, Alex! I'll remember that."
+  - [x] Restart CLI → "Hello" → "Welcome back, Alex! Ready to check the weather?"
+  - [x] "Set my default city to Paris" → restart → "What's the weather?" → Uses Paris, greets as Alex
 
 ## Dev Notes
 
@@ -313,14 +314,20 @@ Expected: Generic greeting, no personalization
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled by dev agent after implementation_
+1. **LibSQL persistence verified**: `mastra.db` file exists (98304 bytes) and persists preferences across CLI restarts
+2. **Key fix for cross-session persistence**: Added `scope: 'resource'` to working memory config in `src/mastra/lib/memory.ts` - this ensures working memory is tied to resourceId ("cli-user") rather than threadId
+3. **User name management**: Added USER NAME MANAGEMENT section to agent instructions with recognition patterns, storage instructions, and usage guidelines
+4. **Returning user greeting**: Added instructions for agent to greet returning users by name and optionally mention their default city
+5. **"New session" behavior confirmed**: Updated message to clarify preferences are saved; verified resourceId stays constant while threadId changes
+6. **Agent-based greeting approach**: Chose to let the agent handle personalized greetings via working memory rather than CLI-level memory access
 
 ### File List
 
-- [ ] `src/mastra/agents/weatherAgent.ts` - Modified (name handling instructions)
-- [ ] `src/cli/index.ts` - Modified (optional: startup greeting)
-- [ ] Verification: `mastra.db` persistence confirmed
+- [x] `src/mastra/lib/memory.ts` - Added `scope: 'resource'` for cross-session persistence
+- [x] `src/mastra/agents/weatherAgent.ts` - Added USER NAME MANAGEMENT and Returning User Greeting sections
+- [x] `src/cli/index.ts` - Updated "new session" message to mention preferences are saved
+- [x] Verification: `mastra.db` persistence confirmed (98304 bytes)

@@ -57,7 +57,7 @@ development_status:
   epic-3: in-progress
   3-1-implement-setdefaultcity-tool: done
   3-2-implement-setpreferredunits-tool: done
-  3-3-persist-preferences-across-sessions: ready-for-dev
+  3-3-persist-preferences-across-sessions: done
   3-4-intent-classification-for-preference-updates: ready-for-dev
   epic-3-retrospective: optional
 
