@@ -82,17 +82,19 @@ workflow_status:
         output: "System-level testability review"
 
       - id: "implementation-readiness"
-        status: "required"
+        status: "_bmad-output/project-planning-artifacts/implementation-readiness-report-2025-12-26.md"
         agent: "architect"
         command: "check-implementation-readiness"
-        note: "Validates PRD + Architecture + Epics + UX"
+        output: "READY - 0 issues, 100% FR coverage"
+        completed: "2025-12-26"
 
   # Phase 3: Implementation
   - phase: 3
     name: "Implementation"
     workflows:
       - id: "sprint-planning"
-        status: "required"
+        status: "_bmad-output/implementation-artifacts/sprint-status.yaml"
         agent: "sm"
         command: "sprint-planning"
-        note: "Creates sprint plan - subsequent work tracked in sprint-status.yaml"
+        output: "4 epics, 13 stories, all at backlog status"
+        completed: "2025-12-26"
