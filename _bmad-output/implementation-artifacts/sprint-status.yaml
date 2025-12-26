@@ -49,7 +49,7 @@ development_status:
   # Epic 2: Weather Information Retrieval
   epic-2: in-progress
   2-1-implement-getcurrentweather-tool: done
-  2-2-implement-weather-query-with-default-city: ready-for-dev
+  2-2-implement-weather-query-with-default-city: done
   2-3-add-contextual-weather-advice: ready-for-dev
   epic-2-retrospective: optional
 

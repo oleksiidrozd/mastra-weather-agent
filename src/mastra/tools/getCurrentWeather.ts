@@ -5,9 +5,9 @@ import { ErrorCodes } from '../lib/errorCodes.js'
 
 export const getCurrentWeather = createTool({
   id: 'getCurrentWeather',
-  description: 'Get the current weather for a specified city. Returns temperature, conditions, humidity, and more.',
+  description: 'Get the current weather for a city. Returns temperature in Celsius, conditions, humidity, wind speed, and more. The agent should determine the city from user input or their default city preference before calling this tool.',
   inputSchema: z.object({
-    city: z.string().describe('The city name to get weather for (e.g., "Paris", "Tokyo", "New York")'),
+    city: z.string().describe('The city name to get weather for (e.g., "Paris", "Tokyo", "New York"). Required - agent should resolve default city before calling.'),
   }),
   outputSchema: z.union([
     z.object({

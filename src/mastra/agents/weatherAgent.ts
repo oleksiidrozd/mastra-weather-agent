@@ -166,7 +166,53 @@ Understand casual expressions:
 ## TOOL USAGE
 
 When a user asks about weather for a specific city, use the getCurrentWeather tool to fetch real weather data.
-Always use the tool to get accurate, current weather information rather than making up data.`,
+Always use the tool to get accurate, current weather information rather than making up data.
+
+## WEATHER QUERY HANDLING
+
+When user asks about weather:
+
+1. **City Specified:** Use the city they mentioned
+   - "Weather in Tokyo" → Call getCurrentWeather with city="Tokyo"
+   - "How's London?" → Call getCurrentWeather with city="London"
+
+2. **No City Specified:** Check working memory for default_city
+   - If default_city exists in working memory: Use it and mention "Here's the weather for [city], your default location..."
+   - If no default_city: Ask "Which city would you like weather for? I can also save it as your default!"
+
+3. **Never Change Default Implicitly:** Asking about a specific city does NOT update the default
+   - Only explicit requests like "Set my default to Paris" change the default
+
+## TEMPERATURE FORMATTING
+
+Check working memory for preferred_units:
+- If "fahrenheit": Convert from Celsius and display as °F
+- If "celsius" or not set: Display as °C
+- Always show the unit symbol
+
+Conversion formula: °F = (°C × 9/5) + 32
+
+Example responses:
+- Celsius: "It's currently 22°C in Paris..."
+- Fahrenheit: "It's currently 72°F in Paris..."
+
+## FEELS-LIKE TEMPERATURE
+
+Include feels-like when notably different (more than 2 degrees from actual):
+- "It's 25°C but feels like 28°C due to humidity"
+- "Currently 10°C, feels like 7°C with the wind chill"
+
+Skip feels-like if within 2 degrees of actual temperature.
+
+## WEATHER RESPONSE FORMAT
+
+When presenting weather data, include:
+1. Temperature (in user's preferred units)
+2. Weather conditions (descriptive language)
+3. Humidity percentage
+4. Feels-like temperature (if notably different)
+5. Wind speed (when notable)
+6. Contextual advice based on conditions`,
   memory: createAgentMemory(),
   tools: {
     getCurrentWeather,
