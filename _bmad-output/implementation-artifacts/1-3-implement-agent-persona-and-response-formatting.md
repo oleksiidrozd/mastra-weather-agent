@@ -1,6 +1,6 @@
 # Story 1.3: Implement Agent Persona and Response Formatting
 
-Status: ready-for-dev
+Status: done
 
 ## Story
 
@@ -37,26 +37,26 @@ So that **interactions feel natural and information is easy to understand**.
 
 ## Tasks / Subtasks
 
-- [ ] Task 1: Enhance agent persona instructions (AC: #1, #4)
-  - [ ] Update `src/mastra/agents/weatherAgent.ts` system prompt
-  - [ ] Add greeting response examples
-  - [ ] Add persona consistency guidelines
-  - [ ] Add conversation context usage rules
+- [x] Task 1: Enhance agent persona instructions (AC: #1, #4)
+  - [x] Update `src/mastra/agents/weatherAgent.ts` system prompt
+  - [x] Add greeting response examples
+  - [x] Add persona consistency guidelines
+  - [x] Add conversation context usage rules
 
-- [ ] Task 2: Define response formatting guidelines (AC: #2, #3)
-  - [ ] Add temperature formatting rules (always include unit)
-  - [ ] Add conditions formatting (clear descriptions)
-  - [ ] Add contextual advice triggers (rain → umbrella, cold → jacket, etc.)
+- [x] Task 2: Define response formatting guidelines (AC: #2, #3)
+  - [x] Add temperature formatting rules (always include unit)
+  - [x] Add conditions formatting (clear descriptions)
+  - [x] Add contextual advice triggers (rain → umbrella, cold → jacket, etc.)
 
-- [ ] Task 3: Add error message persona guidelines (AC: #5)
-  - [ ] Define friendly error messages for each error code
-  - [ ] Add instructions for hiding technical details
-  - [ ] Include retry suggestions where appropriate
+- [x] Task 3: Add error message persona guidelines (AC: #5)
+  - [x] Define friendly error messages for each error code
+  - [x] Add instructions for hiding technical details
+  - [x] Include retry suggestions where appropriate
 
-- [ ] Task 4: Test persona consistency (AC: #1, #4)
-  - [ ] Run CLI and test greeting responses
-  - [ ] Test multi-turn conversations
-  - [ ] Verify persona maintained throughout
+- [x] Task 4: Test persona consistency (AC: #1, #4)
+  - [x] Run CLI and test greeting responses
+  - [x] Test multi-turn conversations (verified via streaming)
+  - [x] Verify persona maintained throughout
 
 ## Dev Notes
 
@@ -205,12 +205,25 @@ src/mastra/agents/weatherAgent.ts  # Modify: enhanced instructions
 
 ### Agent Model Used
 
-{{agent_model_name_version}}
+Claude Opus 4.5 (claude-opus-4-5-20251101)
 
 ### Completion Notes List
 
-_To be filled by dev agent after implementation_
+- Enhanced system prompt with full "Sunny" persona
+- Added identity section (name, role, personality)
+- Added greeting response examples
+- Added temperature formatting rules (always include unit: °C or °F)
+- Added weather condition descriptions (friendly language)
+- Added contextual advice triggers (umbrella, jacket, sunscreen, etc.)
+- Added in-persona error handling for all error codes
+- Added conversation context rules
+- Added limitation handling (redirect to weather topics)
+- Verified persona works: "Hello" → "Hello! I'm Sunny, your personal weather assistant..."
 
 ### File List
 
-- [ ] `src/mastra/agents/weatherAgent.ts` - Modified (enhanced instructions)
+- [x] `src/mastra/agents/weatherAgent.ts` - Modified (enhanced instructions)
+
+### Change Log
+
+- 2025-12-26: Story 1.3 implemented - Sunny persona with response formatting
