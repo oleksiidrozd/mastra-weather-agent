@@ -47,10 +47,10 @@ development_status:
   epic-1-retrospective: optional
 
   # Epic 2: Weather Information Retrieval
-  epic-2: in-progress
+  epic-2: done
   2-1-implement-getcurrentweather-tool: done
   2-2-implement-weather-query-with-default-city: done
-  2-3-add-contextual-weather-advice: ready-for-dev
+  2-3-add-contextual-weather-advice: done
   epic-2-retrospective: optional
 
   # Epic 3: User Preferences & Memory Persistence
