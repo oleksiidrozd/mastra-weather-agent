@@ -7,6 +7,22 @@ import { weatherAgent } from '../mastra/agents/weatherAgent.js'
 const RESOURCE_ID = 'cli-user'
 let threadId = randomUUID()
 
+// Commands that trigger a new session
+const NEW_SESSION_COMMANDS = [
+  'new session',
+  'start over',
+  'reset',
+  'clear',
+  'fresh start',
+  'new chat',
+  'restart',
+]
+
+function isNewSessionCommand(inputText: string): boolean {
+  const normalized = inputText.toLowerCase().trim()
+  return NEW_SESSION_COMMANDS.includes(normalized)
+}
+
 async function main() {
   const rl = readline.createInterface({ input, output })
 
@@ -51,9 +67,31 @@ async function main() {
       break
     }
 
-    if (lowerTrimmed === 'new session') {
+    if (isNewSessionCommand(trimmed)) {
       threadId = randomUUID()
-      console.log('Started new session. Conversation history cleared, but your preferences are saved!')
+      console.log('')
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+      console.log('  New session started!')
+      console.log('  Conversation cleared, preferences saved.')
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━')
+      console.log('')
+
+      // Trigger a greeting from the agent
+      try {
+        process.stdout.write('Agent: ')
+        const result = await weatherAgent.stream('Hello', {
+          threadId,
+          resourceId: RESOURCE_ID,
+          maxSteps: 5,
+        })
+        for await (const chunk of result.textStream) {
+          process.stdout.write(chunk)
+        }
+        console.log('')
+      } catch {
+        console.log('Ready to help with weather!')
+      }
+
       continue
     }
 
