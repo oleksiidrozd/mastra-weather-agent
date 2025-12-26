@@ -35,28 +35,32 @@ async function main() {
       throw error
     }
 
-    const trimmed = userInput.trim().toLowerCase()
+    const trimmed = userInput.trim()
 
-    if (trimmed === 'exit' || trimmed === 'quit') {
+    // Handle empty input
+    if (!trimmed) {
+      console.log('Agent: I didn\'t see a message there. What would you like to know about the weather?')
+      continue
+    }
+
+    const lowerTrimmed = trimmed.toLowerCase()
+
+    if (lowerTrimmed === 'exit' || lowerTrimmed === 'quit') {
       console.log('Goodbye!')
       rl.close()
       break
     }
 
-    if (trimmed === 'new session') {
+    if (lowerTrimmed === 'new session') {
       threadId = randomUUID()
       console.log('Started new session. Previous conversation history cleared.')
-      continue
-    }
-
-    if (!userInput.trim()) {
       continue
     }
 
     try {
       process.stdout.write('Agent: ')
 
-      const result = await weatherAgent.stream(userInput, {
+      const result = await weatherAgent.stream(trimmed, {
         threadId,
         resourceId: RESOURCE_ID,
         maxSteps: 5,
@@ -68,7 +72,11 @@ async function main() {
 
       console.log('') // newline after response
     } catch (error) {
-      console.error('\nError:', error instanceof Error ? error.message : 'Unknown error')
+      // Handle errors gracefully - don't crash
+      console.error('\nSorry, I encountered an issue. Please try again!')
+      if (process.env.DEBUG) {
+        console.error('Debug:', error instanceof Error ? error.message : 'Unknown error')
+      }
     }
   }
 }
