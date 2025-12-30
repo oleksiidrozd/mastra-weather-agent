@@ -729,6 +729,256 @@ Project structure supports all architectural decisions:
 5. Create agent with persona
 6. Implement CLI entry point
 
+## Agent Instructions Template System (Phase 2 Refactoring)
+
+### Overview
+
+The weather agent's instructions string (~600 lines) will be refactored into modular Nunjucks templates with Markdown support. This enables:
+- **Maintainability**: Each logical section is isolated and editable
+- **Reusability**: Templates can be shared or extended for different agent variants
+- **Parameterization**: Agent personality, name, and defaults become configurable
+- **Phase 2 Ready**: Easy to create locale-specific or persona variants
+
+### Technology Stack
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| nunjucks | ^3.2.4 | Template engine (Jinja2-like for JavaScript) |
+| nunjucks-markdown | ^2.0.1 | Markdown block support in templates |
+| marked | ^15.0.0 | Markdown renderer (used by nunjucks-markdown) |
+
+### Template Architecture
+
+**Directory Structure:**
+```
+src/mastra/agents/
+├── weatherAgent.ts           # Agent definition (uses buildInstructions)
+└── templates/
+    ├── index.ts              # Template engine setup + buildInstructions()
+    ├── types.ts              # WeatherAgentConfig interface
+    ├── main.njk              # Master template that includes all sections
+    ├── identity.njk          # Agent name, role, personality, greetings
+    ├── capabilities.njk      # What the agent can do
+    ├── responseFormatting.njk # Temperature display, conditions formatting
+    ├── errorHandling.njk     # Error messages in persona
+    ├── intentClassification.njk # Intent categories, indicators, disambiguation
+    ├── preferenceManagement.njk # City, units, name management rules
+    ├── weatherHandling.njk   # Query handling, tool usage, API patterns
+    ├── conversationContext.njk # Context rules, off-topic, unclear input
+    └── weatherAdvice.njk     # Contextual advice rules (temperature-based)
+```
+
+### Template Configuration Schema
+
+```typescript
+// src/mastra/agents/templates/types.ts
+export interface WeatherAgentConfig {
+  // Identity
+  agentName: string           // Default: "Sunny"
+  agentRole: string           // Default: "weather information specialist"
+  personality: string         // Default: "Cheerful, conversational, weather-obsessed"
+
+  // Defaults
+  defaultUnit: 'celsius' | 'fahrenheit'  // Default: "celsius"
+
+  // Customization
+  greetings?: string[]        // Custom greeting variations
+  ambiguousCities?: string[]  // Cities requiring clarification
+
+  // Advanced (Phase 2+)
+  locale?: string             // For i18n support
+  adviceStyle?: 'formal' | 'casual' | 'minimal'
+}
+
+export const defaultConfig: WeatherAgentConfig = {
+  agentName: 'Sunny',
+  agentRole: 'weather information specialist',
+  personality: 'Cheerful, conversational, weather-obsessed',
+  defaultUnit: 'celsius',
+}
+```
+
+### Nunjucks Environment Configuration
+
+```typescript
+// src/mastra/agents/templates/index.ts
+import nunjucks from 'nunjucks'
+import markdown from 'nunjucks-markdown'
+import { marked } from 'marked'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { WeatherAgentConfig, defaultConfig } from './types.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+// Configure Nunjucks environment
+const env = new nunjucks.Environment(
+  new nunjucks.FileSystemLoader(__dirname),
+  {
+    autoescape: false,  // We're generating text, not HTML
+    trimBlocks: true,   // Remove first newline after block tags
+    lstripBlocks: true  // Strip leading whitespace from block tags
+  }
+)
+
+// Register markdown extension
+markdown.register(env, marked)
+
+export function buildInstructions(config: Partial<WeatherAgentConfig> = {}): string {
+  const finalConfig: WeatherAgentConfig = { ...defaultConfig, ...config }
+  return env.render('main.njk', finalConfig)
+}
+```
+
+### Template Examples
+
+**main.njk (Master Template):**
+```jinja
+You are {{ agentName }}, a friendly and enthusiastic weather assistant! Your personality is warm, helpful, and occasionally witty about weather.
+
+{% include "identity.njk" %}
+
+{% include "capabilities.njk" %}
+
+{% include "responseFormatting.njk" %}
+
+{% include "errorHandling.njk" %}
+
+{% include "conversationContext.njk" %}
+
+{% include "intentClassification.njk" %}
+
+{% include "preferenceManagement.njk" %}
+
+{% include "weatherHandling.njk" %}
+
+{% include "weatherAdvice.njk" %}
+```
+
+**identity.njk:**
+```jinja
+## IDENTITY
+- Name: {{ agentName }}
+- Role: {{ agentRole }}
+- Personality: {{ personality }}
+
+## GREETING RESPONSES
+When users greet you, respond warmly and mention your purpose:
+{% if greetings %}
+{% for greeting in greetings %}
+- "{{ greeting }}"
+{% endfor %}
+{% else %}
+- "Hello! I'm {{ agentName }}, your personal {{ agentRole }}. What city's weather would you like to know about?"
+- "Hey there! Ready to help you plan for the weather today. What location are you curious about?"
+{% endif %}
+```
+
+**weatherAdvice.njk (with temperature macros):**
+```jinja
+{% macro tempAdvice(label, rangeC, rangeF, advice) %}
+**{{ label }} ({{ rangeC if defaultUnit == 'celsius' else rangeF }}):**
+{% for line in advice %}
+- "{{ line }}"
+{% endfor %}
+{% endmacro %}
+
+## CONTEXTUAL WEATHER ADVICE
+
+Always include helpful, practical advice based on conditions.
+
+### TEMPERATURE ADVICE
+
+{{ tempAdvice("Freezing", "< 0°C", "< 32°F", [
+  "It's below freezing! Layer up and watch for ice.",
+  "Brrr! Full winter gear recommended today."
+]) }}
+
+{{ tempAdvice("Cold", "0-10°C", "32-50°F", [
+  "Bundle up - it's chilly out there!",
+  "A warm jacket is definitely needed today."
+]) }}
+
+{{ tempAdvice("Pleasant", "18-25°C", "64-77°F", [
+  "Perfect weather to be outside!",
+  "Great conditions for a walk or outdoor activities."
+]) }}
+
+{{ tempAdvice("Hot", "> 30°C", "> 86°F", [
+  "It's hot out there! Stay hydrated and find some shade.",
+  "Scorching day ahead - drink plenty of water!"
+]) }}
+```
+
+### Integration Pattern
+
+**Updated weatherAgent.ts:**
+```typescript
+import { Agent } from '@mastra/core/agent'
+import { createAgentMemory } from '../lib/memory.js'
+import { buildInstructions } from './templates/index.js'
+import { getCurrentWeather, setDefaultCity, setPreferredUnits, convertTemperature } from '../tools/index.js'
+
+export const weatherAgent = new Agent({
+  name: 'Weather Agent',
+  model: 'google/gemini-2.5-flash',
+  instructions: buildInstructions({
+    agentName: 'Sunny',
+    defaultUnit: 'celsius',
+  }),
+  memory: createAgentMemory(),
+  tools: {
+    getCurrentWeather,
+    setDefaultCity,
+    setPreferredUnits,
+    convertTemperature,
+  },
+})
+```
+
+### Implementation Patterns
+
+**File Naming:**
+- Template files: `.njk` extension (Nunjucks convention)
+- TypeScript files: `.ts` extension (existing convention)
+
+**Template Organization:**
+- One template per logical section (~10 templates)
+- Master template (`main.njk`) includes all sections in order
+- Macros for repeated patterns (temperature ranges, advice blocks)
+
+**Variable Naming in Templates:**
+- Use `{{ camelCase }}` for variables (matches TypeScript)
+- Use `{% block %}` for overridable sections (future extensibility)
+
+**Error Prevention:**
+- Templates are loaded at module initialization (fail-fast)
+- TypeScript interface ensures valid configuration
+- Default values prevent undefined variable errors
+
+### Testing Strategy
+
+**Template Unit Tests:**
+- Test `buildInstructions()` with various config combinations
+- Verify all variables are substituted correctly
+- Test edge cases (empty arrays, missing optional values)
+
+**Integration Tests:**
+- Verify agent behavior unchanged after refactoring
+- Test that streaming still works
+- Verify tool integration remains functional
+
+### Migration Strategy
+
+1. Install dependencies: `npm install nunjucks nunjucks-markdown marked`
+2. Install types: `npm install -D @types/nunjucks`
+3. Create templates directory and files
+4. Extract sections from current instructions string
+5. Create `buildInstructions()` function
+6. Update `weatherAgent.ts` to use templates
+7. Verify agent behavior unchanged
+8. Delete old inline instructions string
+
 ## Architecture Completion Summary
 
 ### Workflow Completion

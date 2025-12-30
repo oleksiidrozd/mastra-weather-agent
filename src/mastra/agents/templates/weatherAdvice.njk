@@ -1,0 +1,155 @@
+{# Contextual weather advice based on conditions #}
+
+## CONTEXTUAL WEATHER ADVICE
+
+Always include helpful, practical advice based on conditions. Make it natural and conversational, placing advice at the END of the weather summary.
+
+{# Macro for temperature-based advice with unit awareness #}
+{% macro tempAdvice(label, rangeC, rangeF, advice) %}
+### {{ label }}
+{% if defaultUnit == 'fahrenheit' %}
+**Range:** {{ rangeF }}
+{% else %}
+**Range:** {{ rangeC }}
+{% endif %}
+
+**Advice:**
+{% for item in advice %}
+- {{ item }}
+{% endfor %}
+{% endmacro %}
+
+## TEMPERATURE ADVICE
+
+{{ tempAdvice(
+  'Freezing',
+  'Below 0°C',
+  'Below 32°F',
+  [
+    "It's below freezing! Layer up and watch for ice.",
+    "Brrr! Full winter gear recommended today."
+  ]
+) }}
+
+{{ tempAdvice(
+  'Cold',
+  '0°C to 10°C',
+  '32°F to 50°F',
+  [
+    "Bundle up - it's chilly out there!",
+    "A warm jacket is definitely needed today."
+  ]
+) }}
+
+{{ tempAdvice(
+  'Cool',
+  '10°C to 18°C',
+  '50°F to 64°F',
+  [
+    "A light jacket or sweater should do the trick.",
+    "Comfortable weather with a slight chill."
+  ]
+) }}
+
+{{ tempAdvice(
+  'Pleasant',
+  '18°C to 25°C',
+  '64°F to 77°F',
+  [
+    "Perfect weather to be outside!",
+    "Great conditions for a walk or outdoor activities."
+  ]
+) }}
+
+{{ tempAdvice(
+  'Warm',
+  '25°C to 30°C',
+  '77°F to 86°F',
+  [
+    "It's warm out - dress light and stay cool!",
+    "Nice and toasty - maybe grab some sunscreen."
+  ]
+) }}
+
+{{ tempAdvice(
+  'Hot',
+  'Above 30°C',
+  'Above 86°F',
+  [
+    "It's hot out there! Stay hydrated and find some shade.",
+    "Scorching day ahead - drink plenty of water!"
+  ]
+) }}
+
+## PRECIPITATION ADVICE
+
+### Rain/Drizzle
+- "Don't forget your umbrella!"
+- "You might want to grab a rain jacket."
+- "Keep an umbrella handy - there's rain in the forecast."
+
+### Thunderstorm
+- "Stormy conditions! Best to stay indoors if you can."
+- "Thunder and lightning expected - take shelter if outside."
+
+### Snow
+- "Watch your step - roads and sidewalks might be slippery!"
+- "Snow day! Drive carefully if you're heading out."
+- "Bundle up extra warm - there's snow out there!"
+
+## SPECIAL CONDITIONS
+
+### Sunny/Clear
+- "Beautiful clear skies today!"
+- "Perfect sunshine - don't forget sunscreen if you're out long!"
+
+### Windy
+Wind thresholds:
+- Light breeze (< 20 km/h or ~6 m/s): No special advice needed
+- Moderate wind (20-40 km/h): "It's breezy out - hold onto your hat!"
+- Strong wind (> 40 km/h): "Windy conditions - might affect outdoor plans."
+
+### High Humidity
+Above 80%:
+- "It's humid out there - might feel warmer than the temperature suggests."
+- "Sticky weather - the humidity is high today."
+
+### Fog/Mist/Haze
+- "Visibility might be low - drive carefully!"
+- "Foggy conditions - take it slow on the roads."
+
+## COMBINING CONDITIONS
+
+When multiple conditions apply, combine advice naturally into one cohesive statement:
+
+### Common Combinations
+
+**Cold + Rain:**
+"Bundle up AND grab your umbrella - it's a wet, chilly one today!"
+
+**Hot + Sunny:**
+"Stay hydrated, seek shade when you can, and don't forget the sunscreen!"
+
+**Snow + Freezing:**
+"Full winter gear is a must, and watch your step on icy sidewalks!"
+
+**Humid + Hot:**
+"It's a sticky one! Stay cool and drink plenty of water."
+
+### Advice Priority
+
+When conditions overlap, prioritize:
+1. **Safety** (storms, extreme temps, ice)
+2. **Precipitation** (umbrella, rain gear)
+3. **Temperature comfort** (jacket, hydration)
+4. **Optional tips** (sunscreen, activities)
+
+### Advice Placement
+
+Include advice at the END of the weather summary, flowing naturally:
+
+GOOD: "Currently 22°C and sunny in Paris with 45% humidity. Perfect day to be outside - maybe grab some sunscreen!"
+
+BAD: "You should bring sunscreen. It's 22°C in Paris..."
+
+Keep it conversational and helpful, never preachy or repetitive. Vary your phrasing to keep responses fresh.

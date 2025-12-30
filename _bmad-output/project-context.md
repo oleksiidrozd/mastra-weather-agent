@@ -154,6 +154,37 @@ _This file contains critical rules and patterns that AI agents must follow when 
 - Use CLI for end-to-end testing
 - Verify streaming works before committing
 
+### Agent Instruction Templates (Nunjucks)
+
+**Template Technology:**
+- nunjucks ^3.2.4 - Template engine
+- nunjucks-markdown ^2.0.1 - Markdown block support
+- marked ^15.0.0 - Markdown renderer
+
+**Template File Rules:**
+- Templates use `.njk` extension (Nunjucks convention)
+- Templates stored in `src/mastra/agents/templates/`
+- Master template (`main.njk`) includes all section templates
+- Use `{% include "filename.njk" %}` for composition
+
+**Nunjucks Configuration:**
+- `autoescape: false` - We're generating text, not HTML
+- `trimBlocks: true` - Remove first newline after block tags
+- `lstripBlocks: true` - Strip leading whitespace from block tags
+
+**Template Variable Rules:**
+- Use `{{ camelCase }}` for variable interpolation
+- Use `{% if %}` / `{% for %}` for control flow
+- Use `{% macro %}` for reusable template functions
+- All variables must have defaults in `types.ts`
+
+**Template Import Pattern:**
+```typescript
+import { fileURLToPath } from 'node:url'
+import path from 'node:path'
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+```
+
 ### Critical Don't-Miss Rules
 
 **Anti-Patterns to Avoid:**

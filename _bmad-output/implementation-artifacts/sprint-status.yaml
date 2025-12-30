@@ -66,3 +66,20 @@ development_status:
   4-1-implement-converttemperature-tool: done
   4-2-implement-new-session-command: done
   epic-4-retrospective: optional
+
+  # Epic 5: Agent Instructions Template Refactoring
+  epic-5: done
+  5-1-install-template-dependencies-and-setup: done
+  5-2-create-template-configuration-types: done
+  5-3-create-template-engine-setup: done
+  5-4-extract-identity-and-greeting-templates: done
+  5-5-extract-capabilities-and-response-formatting-templates: done
+  5-6-extract-error-handling-and-conversation-context-templates: done
+  5-7-extract-intent-classification-template: done
+  5-8-extract-preference-management-template: done
+  5-9-extract-weather-handling-template: done
+  5-10-extract-weather-advice-template-with-macros: done
+  5-11-create-main-template-and-wire-up: done
+  5-12-integrate-templates-with-weather-agent: done
+  5-13-add-template-unit-tests: done
+  epic-5-retrospective: optional

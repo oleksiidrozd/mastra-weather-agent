@@ -8,4 +8,7 @@ export { storage, createAgentMemory }
 export const mastra = new Mastra({
   storage,
   agents: { weatherAgent },
+  bundler: {
+    externals: ['chokidar'],
+  },
 })

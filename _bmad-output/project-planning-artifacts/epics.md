@@ -158,6 +158,13 @@ This epic establishes the foundational infrastructure so subsequent epics have a
 
 **FRs covered:** FR10, FR11, FR12, FR18
 
+### Epic 5: Agent Instructions Template Refactoring
+**User Outcome:** Developer can maintain, customize, and extend the weather agent's instructions through modular Nunjucks templates.
+
+This epic is a **technical refactoring** that doesn't add new functional requirements but improves maintainability and prepares for Phase 2 customization features.
+
+**Dependencies:** Epic 1-4 complete
+
 ## Epic 1: Foundation & Core Agent Setup
 
 **User Outcome:** Developer can run the CLI and have a basic agent conversation with streaming responses.
@@ -451,4 +458,284 @@ So that **I can begin a new interaction without previous context**.
 **When** I continue chatting
 **Then** the agent does not reference previous conversation context
 **And** my saved preferences (default city, units) are still available
+
+## Epic 5: Agent Instructions Template Refactoring
+
+**User Outcome:** Developer can maintain, customize, and extend the weather agent's instructions through modular Nunjucks templates instead of a monolithic string.
+
+This epic refactors the existing ~600-line instructions string into a modular template system using Nunjucks with Markdown support. This is a prerequisite for Phase 2 features (multi-persona, i18n, web UI customization).
+
+**Dependencies:** Epic 1-4 must be complete (working agent exists)
+
+### Story 5.1: Install Template Dependencies and Setup
+
+As a **developer**,
+I want **Nunjucks and related dependencies installed and configured**,
+So that **I can use template-based instruction generation**.
+
+**Acceptance Criteria:**
+
+**Given** the project has existing dependencies
+**When** I run `npm install nunjucks nunjucks-markdown marked`
+**Then** packages are added to package.json
+**And** no version conflicts occur with existing dependencies
+
+**Given** TypeScript is used in the project
+**When** I run `npm install -D @types/nunjucks`
+**Then** type definitions are available for Nunjucks
+
+**Given** the templates directory needs to be created
+**When** I create `src/mastra/agents/templates/`
+**Then** the directory structure matches architecture spec:
+```
+src/mastra/agents/templates/
+├── index.ts
+├── types.ts
+└── *.njk files
+```
+
+### Story 5.2: Create Template Configuration Types
+
+As a **developer**,
+I want **TypeScript interfaces for template configuration**,
+So that **template variables are type-safe and documented**.
+
+**Acceptance Criteria:**
+
+**Given** the templates system needs configuration
+**When** I create `src/mastra/agents/templates/types.ts`
+**Then** it exports `WeatherAgentConfig` interface with:
+- `agentName: string` (default: "Sunny")
+- `agentRole: string` (default: "weather information specialist")
+- `personality: string` (default: "Cheerful, conversational, weather-obsessed")
+- `defaultUnit: 'celsius' | 'fahrenheit'` (default: "celsius")
+- `greetings?: string[]` (optional custom greetings)
+- `ambiguousCities?: string[]` (optional city list)
+
+**And** it exports `defaultConfig` object with all default values
+
+### Story 5.3: Create Template Engine Setup
+
+As a **developer**,
+I want **a configured Nunjucks environment with Markdown support**,
+So that **templates can be rendered with variable substitution**.
+
+**Acceptance Criteria:**
+
+**Given** Nunjucks dependencies are installed
+**When** I create `src/mastra/agents/templates/index.ts`
+**Then** it configures Nunjucks Environment with:
+- FileSystemLoader pointing to templates directory
+- `autoescape: false` (generating text, not HTML)
+- `trimBlocks: true` and `lstripBlocks: true`
+
+**And** registers nunjucks-markdown extension with marked renderer
+
+**And** exports `buildInstructions(config?: Partial<WeatherAgentConfig>): string` function
+
+**Given** `buildInstructions()` is called with partial config
+**When** the function executes
+**Then** it merges with defaultConfig
+**And** renders `main.njk` with the merged configuration
+**And** returns the complete instructions string
+
+### Story 5.4: Extract Identity and Greeting Templates
+
+As a **developer**,
+I want **identity and greeting sections extracted to templates**,
+So that **agent personality is configurable**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain IDENTITY section
+**When** I create `identity.njk`
+**Then** it contains:
+- Agent name, role, personality using `{{ agentName }}`, `{{ agentRole }}`, `{{ personality }}`
+- GREETING RESPONSES with conditional custom greetings
+- Default greetings if none provided
+
+**Given** identity.njk uses template variables
+**When** rendered with different agentName values
+**Then** the output reflects the configured name throughout
+
+### Story 5.5: Extract Capabilities and Response Formatting Templates
+
+As a **developer**,
+I want **capabilities and formatting sections in separate templates**,
+So that **each section can be maintained independently**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain CAPABILITIES section
+**When** I create `capabilities.njk`
+**Then** it lists all agent capabilities (weather info, preferences, conversion, advice)
+
+**Given** the current instructions contain RESPONSE FORMATTING section
+**When** I create `responseFormatting.njk`
+**Then** it contains:
+- Temperature display rules with unit awareness
+- Weather conditions descriptive language
+- Contextual advice formatting guidelines
+
+### Story 5.6: Extract Error Handling and Conversation Context Templates
+
+As a **developer**,
+I want **error handling and context rules in templates**,
+So that **error messaging and context behavior are configurable**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain ERROR HANDLING section
+**When** I create `errorHandling.njk`
+**Then** it contains all error message patterns (city not found, API unavailable, rate limited, missing key)
+**And** uses `{{ agentName }}` where appropriate for persona consistency
+
+**Given** the current instructions contain CONVERSATION CONTEXT section
+**When** I create `conversationContext.njk`
+**Then** it contains context awareness rules, off-topic handling, unclear input handling, empty input handling
+
+### Story 5.7: Extract Intent Classification Template
+
+As a **developer**,
+I want **intent classification rules in a dedicated template**,
+So that **the complex intent logic is isolated and maintainable**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain INTENT CLASSIFICATION section (~150 lines)
+**When** I create `intentClassification.njk`
+**Then** it contains:
+- Intent category definitions (Weather Query, Preference Update, etc.)
+- Weather query indicators with example patterns
+- Preference update indicators with example patterns
+- Disambiguation rules
+- Multi-preference handling
+- Tricky cases and "never assume" rules
+
+### Story 5.8: Extract Preference Management Template
+
+As a **developer**,
+I want **preference management rules in a template**,
+So that **preference handling logic is centralized**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain preference sections
+**When** I create `preferenceManagement.njk`
+**Then** it consolidates:
+- DEFAULT CITY MANAGEMENT (setting, updating, when not to set)
+- UNIT PREFERENCE MANAGEMENT (recognizing, setting, switching)
+- USER NAME MANAGEMENT (recognizing, storing, using)
+- New/returning session greeting rules
+
+### Story 5.9: Extract Weather Handling Template
+
+As a **developer**,
+I want **weather query and tool usage rules in a template**,
+So that **weather-specific logic is isolated**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain weather handling sections
+**When** I create `weatherHandling.njk`
+**Then** it contains:
+- TOOL USAGE rules
+- WEATHER QUERY HANDLING (city specified, no city, never change default)
+- TEMPERATURE FORMATTING rules
+- TEMPERATURE CONVERSION rules (explicit, contextual, parsing, response formatting)
+- FEELS-LIKE TEMPERATURE rules
+- WEATHER RESPONSE FORMAT structure
+- AMBIGUOUS LOCATION HANDLING with `{{ ambiguousCities }}` if provided
+
+### Story 5.10: Extract Weather Advice Template with Macros
+
+As a **developer**,
+I want **weather advice rules in a template with reusable macros**,
+So that **temperature-based advice is DRY and unit-aware**.
+
+**Acceptance Criteria:**
+
+**Given** the current instructions contain CONTEXTUAL WEATHER ADVICE section
+**When** I create `weatherAdvice.njk`
+**Then** it defines a `tempAdvice` macro that accepts:
+- label (e.g., "Freezing")
+- rangeC (Celsius range string)
+- rangeF (Fahrenheit range string)
+- advice (array of advice strings)
+
+**And** the macro displays the appropriate range based on `{{ defaultUnit }}`
+
+**And** all temperature ranges use the macro:
+- Freezing, Cold, Cool, Pleasant, Warm, Hot
+
+**And** precipitation advice (rain, thunderstorm, snow) is included
+**And** special conditions (sunny, windy, humid, fog) are included
+**And** combining conditions rules are included
+
+### Story 5.11: Create Main Template and Wire Up
+
+As a **developer**,
+I want **a main template that includes all section templates**,
+So that **the complete instructions are composed from modular parts**.
+
+**Acceptance Criteria:**
+
+**Given** all section templates exist
+**When** I create `main.njk`
+**Then** it:
+- Opens with the agent introduction using `{{ agentName }}`
+- Includes all section templates in logical order via `{% include %}`
+- Order: identity → capabilities → responseFormatting → errorHandling → conversationContext → intentClassification → preferenceManagement → weatherHandling → weatherAdvice
+
+**Given** main.njk includes all templates
+**When** `buildInstructions()` renders main.njk
+**Then** the output matches the structure and content of the original instructions string
+
+### Story 5.12: Integrate Templates with Weather Agent
+
+As a **developer**,
+I want **weatherAgent.ts updated to use the template system**,
+So that **the agent uses modular, configurable instructions**.
+
+**Acceptance Criteria:**
+
+**Given** the template system is complete
+**When** I update `src/mastra/agents/weatherAgent.ts`
+**Then** it imports `buildInstructions` from `./templates/index.js`
+**And** replaces the inline instructions string with:
+```typescript
+instructions: buildInstructions({
+  agentName: 'Sunny',
+  defaultUnit: 'celsius',
+})
+```
+
+**Given** the agent uses buildInstructions
+**When** I run the CLI and interact with the agent
+**Then** behavior is identical to before the refactoring
+**And** streaming still works correctly
+**And** all tools function as expected
+
+### Story 5.13: Add Template Unit Tests
+
+As a **developer**,
+I want **unit tests for the template system**,
+So that **template rendering is verified and regressions are caught**.
+
+**Acceptance Criteria:**
+
+**Given** the template system is implemented
+**When** I create `tests/mastra/agents/templates/index.test.ts`
+**Then** it tests:
+- `buildInstructions()` with default config produces valid output
+- `buildInstructions()` with custom agentName substitutes correctly
+- `buildInstructions()` with custom greetings array uses them
+- `buildInstructions()` with defaultUnit='fahrenheit' shows Fahrenheit ranges
+- Output contains all expected section headers
+- No undefined or empty variable substitutions
+
+**Given** tests pass
+**When** I run `npm test`
+**Then** all template tests pass
+**And** no regressions in existing tests
 
