@@ -1,6 +1,6 @@
 import { PostgresStore } from '@mastra/pg'
 import type { StorageResourceType, StorageGetMessagesArg } from '@mastra/core/storage'
-import type { StorageThreadType } from '@mastra/core/memory'
+import type { StorageThreadType, MastraMessageV1 } from '@mastra/core/memory'
 import type { MastraMessageV2 } from '@mastra/core/agent'
 import { v5 as uuidv5 } from 'uuid'
 import { db } from '../../../db/index.js'
@@ -194,9 +194,8 @@ export class SupabaseStore extends PostgresStore {
     await this.drizzle.delete(threads).where(eq(threads.id, threadId))
   }
 
-  // Message methods (V2 format only)
-  // @ts-expect-error - We only support V2 format, ignoring V1 overload
-  async getMessages({ threadId, selectBy }: StorageGetMessagesArg): Promise<MastraMessageV2[]> {
+  // Message methods with V1/V2 overloads
+  async getMessages<T extends MastraMessageV2[]>({ threadId, selectBy }: StorageGetMessagesArg): Promise<T> {
     const limit = typeof selectBy?.last === 'number' ? selectBy.last : 40
 
     const result = await this.drizzle
@@ -207,7 +206,7 @@ export class SupabaseStore extends PostgresStore {
       .limit(limit)
 
     // Return in chronological order
-    return result.reverse().map(row => ({
+    const v2Messages = result.reverse().map(row => ({
       id: row.id,
       role: row.role as 'user' | 'assistant' | 'system',
       createdAt: row.createdAt,
@@ -215,28 +214,38 @@ export class SupabaseStore extends PostgresStore {
       resourceId: row.resourceId ?? undefined,
       content: JSON.parse(row.content),
     }))
+
+    return v2Messages as T
   }
 
-  // @ts-expect-error - We only support V2 format, ignoring V1 overload
-  async saveMessages({ messages: msgs }: { messages: MastraMessageV2[] }): Promise<MastraMessageV2[]> {
+  saveMessages(args: { messages: MastraMessageV1[]; format?: undefined | 'v1' }): Promise<MastraMessageV1[]>
+  saveMessages(args: { messages: MastraMessageV2[]; format: 'v2' }): Promise<MastraMessageV2[]>
+  async saveMessages(args: {
+    messages: MastraMessageV1[] | MastraMessageV2[]
+    format?: 'v1' | 'v2'
+  }): Promise<MastraMessageV1[] | MastraMessageV2[]> {
+    const msgs = args.messages
     if (msgs.length === 0) return []
 
     const threadId = msgs[0]?.threadId
     if (!threadId) throw new Error('threadId is required')
 
+    // Determine if messages are V2 format
+    const isV2 = args.format === 'v2' || (msgs[0] && 'content' in msgs[0] && typeof msgs[0].content === 'object' && 'format' in msgs[0].content)
+
     await this.drizzle.insert(messages).values(
       msgs.map(msg => ({
         id: msg.id,
         threadId,
-        content: JSON.stringify(msg.content),
-        role: msg.role,
+        content: isV2 ? JSON.stringify((msg as MastraMessageV2).content) : JSON.stringify({ format: 2, parts: [{ type: 'text', text: String((msg as MastraMessageV1).content) }], content: String((msg as MastraMessageV1).content) }),
+        role: msg.role as string,
         resourceId: msg.resourceId ?? null,
         createdAt: msg.createdAt,
       }))
     ).onConflictDoUpdate({
       target: messages.id,
       set: {
-        content: msgs[0] ? JSON.stringify(msgs[0].content) : '',
+        content: isV2 ? JSON.stringify((msgs[0] as MastraMessageV2).content) : JSON.stringify({ format: 2, parts: [{ type: 'text', text: String((msgs[0] as MastraMessageV1).content) }] }),
         role: msgs[0]?.role ?? 'user',
       },
     })
