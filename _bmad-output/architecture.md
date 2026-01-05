@@ -979,6 +979,194 @@ export const weatherAgent = new Agent({
 7. Verify agent behavior unchanged
 8. Delete old inline instructions string
 
+## Database Migration: LibSQL to Supabase (Phase 2)
+
+### Overview
+
+Migration from LibSQL (SQLite file-based) to Supabase (PostgreSQL) with normalized user data tables. This enables:
+- **Multi-consumer access**: Shared user data across agents, mobile apps, web services
+- **Normalized schema**: Separate tables for users and preferences (future-proof for schema evolution)
+- **UUID primary keys**: PostgreSQL-native user identification
+- **Type-safe queries**: Drizzle ORM for all custom table operations
+
+### Technology Stack
+
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| `@mastra/pg` | ^0.24.x | PostgresStore for Mastra tables (threads, messages, workflows) |
+| `drizzle-orm` | ^0.38.x | Type-safe ORM for custom tables |
+| `pg` | ^8.x | PostgreSQL driver |
+| `drizzle-kit` | ^0.30.x | Schema migrations (dev dependency) |
+
+### Architecture Decision: Hybrid Storage
+
+**Decision:** Use PostgresStore for Mastra-managed tables, Drizzle ORM for custom user tables.
+
+**Rationale:**
+- Mastra's thread/message/workflow tables remain unchanged
+- Custom tables (users, user_preferences) use normalized schema
+- No framework fighting - extend, don't replace
+- Clean separation of concerns
+
+### Database Schema
+
+**PostgreSQL Schema:** `weather` (separate from Mastra's `public` schema)
+
+```sql
+-- Schema for weather app tables
+CREATE SCHEMA IF NOT EXISTS weather;
+
+-- users table
+CREATE TABLE weather.users (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  username TEXT,
+  location TEXT,  -- maps to working memory: default_city
+  created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+
+-- user_preferences table
+CREATE TABLE weather.user_preferences (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id UUID REFERENCES weather.users(id) ON DELETE CASCADE UNIQUE NOT NULL,
+  units TEXT DEFAULT 'celsius' NOT NULL CHECK (units IN ('celsius', 'fahrenheit')),
+  created_at TIMESTAMPTZ DEFAULT NOW() NOT NULL,
+  updated_at TIMESTAMPTZ DEFAULT NOW() NOT NULL
+);
+```
+
+### Drizzle Schema Definition
+
+```typescript
+// src/db/schema.ts
+import { pgSchema, uuid, text, timestamp } from 'drizzle-orm/pg-core';
+
+export const weatherSchema = pgSchema('weather');
+
+export const users = weatherSchema.table('users', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  username: text('username'),
+  location: text('location'),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
+});
+
+export const userPreferences = weatherSchema.table('user_preferences', {
+  id: uuid('id').primaryKey().defaultRandom(),
+  userId: uuid('user_id').references(() => users.id, { onDelete: 'cascade' }).unique().notNull(),
+  units: text('units').default('celsius').notNull(),
+  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
+  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
+});
+```
+
+### Working Memory Field Mapping
+
+| Working Memory Field | Normalized Table.Column |
+|---------------------|-------------------------|
+| `default_city` | `weather.users.location` |
+| `user_name` | `weather.users.username` |
+| `preferred_units` | `weather.user_preferences.units` |
+
+### Custom Storage Adapter Pattern
+
+**SupabaseStore Class:**
+- Extends `PostgresStore` from `@mastra/pg`
+- Overrides only resource methods: `getResourceById`, `saveResource`, `updateResource`
+- Uses Drizzle for type-safe queries on custom tables
+- All other operations (threads, messages, workflows) use parent PostgresStore
+
+```typescript
+// src/mastra/lib/storage/supabaseStore.ts
+export class SupabaseStore extends PostgresStore {
+  private drizzle: DrizzleDB;
+
+  async getResourceById({ resourceId }) {
+    // Drizzle query: JOIN users + user_preferences
+    // Reconstruct workingMemory JSON
+    // Return StorageResourceType
+  }
+
+  async saveResource({ resource }) {
+    // Parse workingMemory JSON
+    // Drizzle transaction: INSERT user + INSERT preferences
+  }
+
+  async updateResource({ resourceId, workingMemory, metadata }) {
+    // Parse workingMemory JSON
+    // Drizzle transaction: UPSERT user + UPSERT preferences
+  }
+}
+```
+
+### Project Structure Updates
+
+```
+src/
+├── db/                           # NEW: Drizzle ORM
+│   ├── schema.ts                 # Table definitions
+│   └── index.ts                  # Drizzle client
+├── mastra/
+│   ├── lib/
+│   │   ├── storage/              # NEW: Custom storage adapter
+│   │   │   ├── supabaseStore.ts  # SupabaseStore class
+│   │   │   └── index.ts          # Export barrel
+│   │   ├── memory.ts             # MODIFIED: Use SupabaseStore
+│   │   └── ...
+│   └── ...
+└── ...
+
+drizzle.config.ts                 # NEW: Drizzle Kit config
+drizzle/                          # NEW: Migration files (generated)
+```
+
+### Environment Configuration
+
+```env
+# Supabase PostgreSQL connection string
+SUPABASE_DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DATABASE
+```
+
+### npm Scripts
+
+```json
+{
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:push": "drizzle-kit push",
+    "db:studio": "drizzle-kit studio"
+  }
+}
+```
+
+### Migration Strategy
+
+1. Install dependencies (`@mastra/pg`, `drizzle-orm`, `pg`, `drizzle-kit`)
+2. Create Drizzle schema and client
+3. Run `drizzle-kit push` to create tables in Supabase
+4. Implement SupabaseStore class
+5. Update memory.ts to use SupabaseStore
+6. Test with CLI
+7. (Optional) Migrate existing LibSQL data to Supabase
+
+### Data Flow
+
+```
+Agent.stream() with resourceId (UUID)
+    ↓
+Memory.getWorkingMemory()
+    ↓
+SupabaseStore.getResourceById()
+    ↓
+Drizzle: SELECT users JOIN user_preferences
+    ↓
+Reconstruct: { default_city, user_name, preferred_units }
+    ↓
+Return as workingMemory JSON string
+```
+
+---
+
 ## Architecture Completion Summary
 
 ### Workflow Completion

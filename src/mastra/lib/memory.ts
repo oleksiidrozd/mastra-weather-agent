@@ -1,10 +1,18 @@
 import { Memory } from '@mastra/memory'
-import { LibSQLStore } from '@mastra/libsql'
+import { SupabaseStore } from './storage/index.js'
 import { workingMemorySchema } from './types.js'
 
-// LibSQL storage for persistence
-export const storage = new LibSQLStore({
-  url: 'file:mastra.db',
+// Validate environment variable
+if (!process.env.SUPABASE_DATABASE_URL) {
+  throw new Error(
+    'SUPABASE_DATABASE_URL environment variable is required. ' +
+    'Please set it to your Supabase PostgreSQL connection string.'
+  )
+}
+
+// Supabase storage for persistence
+export const storage = new SupabaseStore({
+  connectionString: process.env.SUPABASE_DATABASE_URL,
 })
 
 // Memory configuration with working memory schema

@@ -1,423 +1,1033 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="198" failures="0" errors="0" time="0.80854896">
-    <testsuite name="tests/mastra/agents/templates/capabilities.test.ts" timestamp="2025-12-30T15:33:46.886Z" hostname="MWDNs-MacBook-Pro.local" tests="7" failures="0" errors="0" skipped="0" time="0.060957082">
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should contain CAPABILITIES header" time="0.00460726">
+<testsuites name="vitest tests" tests="280" failures="38" errors="0" time="0.989222089">
+    <testsuite name="tests/cli/intent-classification.test.ts" timestamp="2026-01-02T12:02:46.060Z" hostname="MWDNs-MacBook-Pro.local" tests="7" failures="7" errors="0" skipped="0" time="0.017599802">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;Set my city to Paris&quot; as preference update" time="0.01219046">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:42:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list weather information capability" time="0.000256373">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;Weather in Paris&quot; as weather query, not preference update" time="0.000799393">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:58:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list preferences capability" time="0.047966233">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;I prefer Fahrenheit&quot; as preference update" time="0.000593664">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:74:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list conversion capability" time="0.000296018">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; FR3: Preference Update vs Weather Query &gt; should classify &quot;My name is Alex&quot; as name update" time="0.000535524">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:89:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list advice capability" time="0.000425602">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; R-3-003: Natural Language Preference Updates &gt; should classify &quot;Remember that I live in Tokyo&quot; as preference update" time="0.00065241">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:107:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #3: Output structure matches original &gt; should have bullet points for each capability" time="0.00150147">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; R-3-003: Natural Language Preference Updates &gt; should classify &quot;Use Celsius for temperatures&quot; as preference update" time="0.00050403">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:123:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #5: Template independence &gt; should render without variables from other templates" time="0.003887805">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/conversationContext.test.ts" timestamp="2025-12-30T15:33:46.889Z" hostname="MWDNs-MacBook-Pro.local" tests="13" failures="0" errors="0" skipped="0" time="0.029571734">
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should contain CONVERSATION CONTEXT header" time="0.012200973">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should include context awareness rules" time="0.000248182">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should include follow-up question handling" time="0.000196974">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should contain OFF-TOPIC HANDLING section" time="0.000212749">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should include example redirections" time="0.005595703">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should include redirection rules" time="0.000241345">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should contain UNCLEAR INPUT HANDLING section" time="0.000167378">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should include example responses to gibberish" time="0.000154567">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should include handling rules" time="0.000176472">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Empty input handling &gt; should contain EMPTY INPUT section" time="0.000328033">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Empty input handling &gt; should include empty input response pattern" time="0.000191315">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #4: Output structure &gt; should have all major sections" time="0.000218242">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #5: Template independence &gt; should render without any config variables" time="0.000151153">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/errorHandling.test.ts" timestamp="2025-12-30T15:33:46.892Z" hostname="MWDNs-MacBook-Pro.local" tests="9" failures="0" errors="0" skipped="0" time="0.00963249">
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should contain ERROR HANDLING header" time="0.006126061">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include city not found error pattern" time="0.000254796">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include API unavailable error pattern" time="0.000279167">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include rate limited error pattern" time="0.000199299">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include missing API key error pattern" time="0.000180337">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include rule to never expose technical details" time="0.000183499">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in error handling principles" time="0.000177465">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #3: Agent name substitution &gt; should use default agentName when using defaultConfig" time="0.000153147">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #5: Template independence &gt; should render with only required variables" time="0.000206923">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/identity.test.ts" timestamp="2025-12-30T15:33:46.893Z" hostname="MWDNs-MacBook-Pro.local" tests="10" failures="0" errors="0" skipped="0" time="0.012913015">
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #1: Identity section structure &gt; should contain IDENTITY section with configurable values" time="0.008162934">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #1: Identity section structure &gt; should contain GREETING RESPONSES section" time="0.000256527">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute agentName throughout" time="0.000382767">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute agentRole" time="0.000188129">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute personality" time="0.000192472">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #3: Custom greetings &gt; should render custom greetings when provided" time="0.000353147">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #4: Default greetings &gt; should use default greetings when none provided" time="0.000186524">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #4: Default greetings &gt; should include agentName in default greetings" time="0.000151818">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #5: Output structure matches original &gt; should maintain the persona introduction" time="0.000202712">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #5: Output structure matches original &gt; should instruct when to respond warmly" time="0.000197997">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/index.test.ts" timestamp="2025-12-30T15:33:46.895Z" hostname="MWDNs-MacBook-Pro.local" tests="22" failures="0" errors="0" skipped="0" time="0.056838663">
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #1: Nunjucks environment configuration &gt; should configure environment with autoescape disabled" time="0.001583177">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #1: Nunjucks environment configuration &gt; should resolve templates from the templates directory" time="0.041827828">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #2: Markdown extension registration &gt; should have markdown extension available" time="0.000250837">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should merge partial config with defaults" time="0.000784296">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should include personality from defaults" time="0.000424859">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render defaultUnit correctly" time="0.001000007">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render optional greetings when provided" time="0.000620738">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render ambiguousCities when provided" time="0.000579995">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #4: buildInstructions with no arguments &gt; should use all default values" time="0.000707125">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #4: buildInstructions with no arguments &gt; should not include optional fields when not provided" time="0.000624293">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #5: ESM path resolution &gt; should correctly resolve template paths in ESM environment" time="0.000443773">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Re-exports &gt; should re-export defaultConfig" time="0.000187145">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Re-exports &gt; should re-export mergeConfig" time="0.000240424">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Temperature unit ranges &gt; should show Celsius temperature ranges when defaultUnit is celsius" time="0.000522878">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Temperature unit ranges &gt; should show Fahrenheit temperature ranges when defaultUnit is fahrenheit" time="0.000540769">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Section presence &gt; should include all major section headers" time="0.000634727">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain unsubstituted Nunjucks variables" time="0.000436543">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain undefined or null values" time="0.000910711">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain Nunjucks template syntax in output" time="0.000540572">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Combined configuration &gt; should handle multiple config options together" time="0.000785447">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; defaultConfig values &gt; should have expected default values" time="0.000412709">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; defaultConfig values &gt; should not have optional properties set" time="0.000279082">
+        <testcase classname="tests/cli/intent-classification.test.ts" name="P0: Intent Classification &gt; Memory Performance (NFR3) &gt; should read/write memory within 100ms" time="0.000454663">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/intent-classification.test.ts:144:20
+            </failure>
         </testcase>
     </testsuite>
-    <testsuite name="tests/mastra/agents/templates/intentClassification.test.ts" timestamp="2025-12-30T15:33:46.899Z" hostname="MWDNs-MacBook-Pro.local" tests="22" failures="0" errors="0" skipped="0" time="0.02586766">
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Intent categories &gt; should contain INTENT CLASSIFICATION header" time="0.008189269">
+    <testsuite name="tests/cli/session-management.test.ts" timestamp="2026-01-02T12:02:46.066Z" hostname="MWDNs-MacBook-Pro.local" tests="6" failures="6" errors="0" skipped="0" time="0.027005334">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should regenerate thread ID on &quot;new session&quot;" time="0.020127158">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:44:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Intent categories &gt; should list all intent categories" time="0.000686608">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should preserve preferences after new session" time="0.000772444">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:61:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Weather query indicators &gt; should include weather query patterns" time="0.000527244">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR18: New Session Command &gt; should clear conversation history after new session" time="0.000664261">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:78:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Weather query indicators &gt; should include contextual query examples" time="0.000213841">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR12: Context-Aware Temperature Conversion &gt; should understand &quot;what&apos;s that in Fahrenheit?&quot; after weather query" time="0.002036946">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:97:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include preference update patterns" time="0.001224482">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; FR12: Context-Aware Temperature Conversion &gt; should use last temperature from conversation for conversion" time="0.000698329">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:113:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include unit preference patterns" time="0.000221157">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include name sharing patterns" time="0.000162904">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should include disambiguation section" time="0.001365982">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should explain ambiguous city name handling" time="0.000250138">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should include &quot;I&apos;m in [city]&quot; disambiguation" time="0.000216433">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Multi-preference handling &gt; should include multi-preference section" time="0.000132631">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Multi-preference handling &gt; should include example of multiple preferences" time="0.00012055">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Tricky cases &gt; should include tricky cases section" time="0.004218286">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Tricky cases &gt; should include weather at home example" time="0.000174969">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Never assume rules &gt; should include NEVER ASSUME section" time="0.000125455">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Never assume rules &gt; should list what not to assume" time="0.000132982">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Ambiguous location handling &gt; should include ambiguous location section" time="0.001040526">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Ambiguous location handling &gt; should list known ambiguous cities" time="0.000178202">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Informal language understanding &gt; should include informal language section" time="0.000115797">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Informal language understanding &gt; should include casual expressions" time="0.000129139">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #2: Maintainability &gt; should use clear section headers" time="0.000307027">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #5: Template independence &gt; should render without any config variables" time="0.000114642">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/main.test.ts" timestamp="2025-12-30T15:33:46.903Z" hostname="MWDNs-MacBook-Pro.local" tests="15" failures="0" errors="0" skipped="0" time="0.051839194">
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should render complete instructions with opening" time="0.033471537">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should include all section templates in correct order" time="0.003399104">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should include sections in logical order" time="0.001506581">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #2: Content completeness &gt; should produce output of substantial length" time="0.000521951">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #2: Content completeness &gt; should include key content from each template" time="0.00387281">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #3: Template modularity &gt; should include identity template content" time="0.000563658">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #3: Template modularity &gt; should include weather advice template content" time="0.000355321">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #4: Section separation &gt; should have proper section headers" time="0.000806738">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should substitute agentName throughout all templates" time="0.000496711">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should substitute defaultUnit in weather advice" time="0.000627662">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should pass all config values to included templates" time="0.000563099">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Custom config options &gt; should include custom greetings when provided" time="0.000401348">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Custom config options &gt; should include custom ambiguous cities when provided" time="0.000757104">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Default config rendering &gt; should render successfully with no config" time="0.000761997">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Default config rendering &gt; should use default values when no config provided" time="0.000393267">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/preferenceManagement.test.ts" timestamp="2025-12-30T15:33:46.906Z" hostname="MWDNs-MacBook-Pro.local" tests="27" failures="0" errors="0" skipped="0" time="0.18129408">
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should contain DEFAULT CITY MANAGEMENT header" time="0.168637571">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should include setting patterns" time="0.000884574">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should include when NOT to set default" time="0.000286606">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should contain UNIT PREFERENCE MANAGEMENT header" time="0.000217499">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include Fahrenheit indicators" time="0.000269756">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include Celsius indicators" time="0.000247194">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include confirmation messages" time="0.000341079">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should contain USER NAME MANAGEMENT header" time="0.000217294">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should include name recognition patterns" time="0.000211199">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should include name usage guidelines" time="0.00067443">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should contain SESSION GREETING RULES header" time="0.000165175">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include returning user greeting" time="0.000178506">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include new session greeting" time="0.002303986">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include new user greeting" time="0.000317646">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #2: Preference operations &gt; should explain set operations for each preference type" time="0.000184628">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #2: Preference operations &gt; should explain update operations" time="0.000149213">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in greetings" time="0.000128317">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should use default agentName (Sunny) with defaultConfig" time="0.000113735">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in multiple places" time="0.00055919">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #4: Working memory usage &gt; should explain working memory schema" time="0.000203953">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #4: Working memory usage &gt; should explain working memory usage for personalization" time="0.000139401">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Multi-preference handling &gt; should contain MULTI-PREFERENCE HANDLING section" time="0.000117518">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Multi-preference handling &gt; should include examples of multiple preferences" time="0.000812834">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Confirmation messages &gt; should contain CONFIRMATION MESSAGES section" time="0.000148555">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Confirmation messages &gt; should include confirmation patterns for all preference types" time="0.000199354">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; Template structure &gt; should have all major sections" time="0.00022382">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; Template independence &gt; should render with only required variables" time="0.000145677">
+        <testcase classname="tests/cli/session-management.test.ts" name="P0: Session Management &gt; R-4-001: Conversation Context Accessibility &gt; should have access to conversation history for context" time="0.000547634">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/session-management.test.ts:131:20
+            </failure>
         </testcase>
     </testsuite>
-    <testsuite name="tests/mastra/agents/templates/responseFormatting.test.ts" timestamp="2025-12-30T15:33:46.911Z" hostname="MWDNs-MacBook-Pro.local" tests="8" failures="0" errors="0" skipped="0" time="0.12786475">
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain RESPONSE FORMATTING header" time="0.010058178">
+    <testsuite name="tests/cli/streaming.test.ts" timestamp="2026-01-02T12:02:46.069Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="5" errors="0" skipped="0" time="0.015284196">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR1: Send Messages via CLI &gt; should accept user input and send to agent" time="0.009553119">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:42:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain temperature display rules" time="0.000369732">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR1: Send Messages via CLI &gt; should handle empty input gracefully" time="0.00076503">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:56:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain weather conditions guidelines" time="0.000363354">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR2: Streaming Text Output &gt; should output tokens as they arrive from agent" time="0.001627351">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:78:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain contextual advice reference" time="0.112718137">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; FR2: Streaming Text Output &gt; should complete streaming within reasonable time" time="0.000638463">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:95:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should show Celsius when defaultUnit is celsius" time="0.001338337">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should show Fahrenheit when defaultUnit is fahrenheit" time="0.000326979">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should use the defaultUnit variable in output" time="0.000322596">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #5: Template independence &gt; should render independently of identity template" time="0.000178117">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/types.test.ts" timestamp="2025-12-30T15:33:46.913Z" hostname="MWDNs-MacBook-Pro.local" tests="11" failures="0" errors="0" skipped="0" time="0.00741932">
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should have all required properties in defaultConfig" time="0.001561152">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should allow optional properties to be undefined" time="0.000284794">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should only allow valid unit values" time="0.000209">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #2: defaultConfig export &gt; should satisfy WeatherAgentConfig interface" time="0.00102929">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should merge partial config with defaults" time="0.000271552">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should override multiple properties" time="0.000853102">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should return defaults when no partial provided" time="0.000226195">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should return defaults when undefined provided" time="0.000185884">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #4: TypeScript strict mode compatibility &gt; should create valid config with all required fields" time="0.00020142">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #4: TypeScript strict mode compatibility &gt; should allow optional fields to be set" time="0.000429571">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #5: Config extension &gt; should support conditional rendering based on optional properties" time="0.000174105">
-        </testcase>
-    </testsuite>
-    <testsuite name="tests/mastra/agents/templates/weatherAdvice.test.ts" timestamp="2025-12-30T15:33:46.915Z" hostname="MWDNs-MacBook-Pro.local" tests="23" failures="0" errors="0" skipped="0" time="0.045872497">
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should show Celsius ranges when defaultUnit is celsius" time="0.038484754">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should show Fahrenheit ranges when defaultUnit is fahrenheit" time="0.000520176">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should not show Fahrenheit ranges when defaultUnit is celsius" time="0.000419419">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should not show Celsius ranges when defaultUnit is fahrenheit" time="0.000294456">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #3: Temperature ranges &gt; should include all temperature categories" time="0.000354843">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #3: Temperature ranges &gt; should include advice for each temperature range" time="0.000297874">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should contain PRECIPITATION ADVICE header" time="0.000190566">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include rain advice" time="0.000196732">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include thunderstorm advice" time="0.000238891">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include snow advice" time="0.000285832">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should contain SPECIAL CONDITIONS header" time="0.000172655">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include sunny/clear advice" time="0.000168558">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include windy advice with thresholds" time="0.000179661">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include humidity advice" time="0.000201566">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include fog/mist advice" time="0.000164732">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should contain COMBINING CONDITIONS header" time="0.000141051">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include common combinations" time="0.000188973">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include priority rules" time="0.000180811">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include advice placement guidance" time="0.000187008">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template structure &gt; should have all major sections" time="0.000210974">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template structure &gt; should contain header for the section" time="0.000134863">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template independence &gt; should render with minimal config (defaults to celsius)" time="0.000235749">
-        </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template independence &gt; should use celsius as default when no unit specified" time="0.000220282">
+        <testcase classname="tests/cli/streaming.test.ts" name="P0: CLI Streaming &gt; R-1-004: Streaming Responsiveness &gt; should not block CLI during streaming" time="0.000636005">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/cli/streaming.test.ts:109:20
+            </failure>
         </testcase>
     </testsuite>
-    <testsuite name="tests/mastra/agents/templates/weatherHandling.test.ts" timestamp="2025-12-30T15:33:46.921Z" hostname="MWDNs-MacBook-Pro.local" tests="31" failures="0" errors="0" skipped="0" time="0.198478475">
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should contain TOOL USAGE header" time="0.188081397">
+    <testsuite name="tests/mastra/lib/env-config.test.ts" timestamp="2026-01-02T12:02:46.072Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="0" errors="0" skipped="0" time="0.005734365">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should have GOOGLE_GENERATIVE_AI_API_KEY defined in test env" time="0.002387814">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include getCurrentWeather tool" time="0.000377704">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should have OPENWEATHERMAP_API_KEY defined in test env" time="0.000287901">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include setDefaultCity tool" time="0.000255443">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should throw clear error when GOOGLE_GENERATIVE_AI_API_KEY is missing" time="0.000452387">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include setPreferredUnits tool" time="0.000225302">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Loading &gt; should throw clear error when OPENWEATHERMAP_API_KEY is missing" time="0.000232326">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include convertTemperature tool" time="0.001937825">
+        <testcase classname="tests/mastra/lib/env-config.test.ts" name="Environment Configuration &gt; API Key Security &gt; should not expose API keys in error messages" time="0.000297043">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should contain WEATHER QUERY HANDLING header" time="0.000351332">
+    </testsuite>
+    <testsuite name="tests/mastra/lib/env-validation.test.ts" timestamp="2026-01-02T12:02:46.074Z" hostname="MWDNs-MacBook-Pro.local" tests="5" failures="5" errors="0" skipped="0" time="0.026926078">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; NFR5: API Keys from Environment Only &gt; should load GOOGLE_GENERATIVE_AI_API_KEY from environment" time="0.012144299">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:33:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include city specified handling" time="0.000210017">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; NFR5: API Keys from Environment Only &gt; should load OPENWEATHERMAP_API_KEY from environment" time="0.003544292">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:48:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include no city specified handling" time="0.00016884">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should throw clear error when GOOGLE_GENERATIVE_AI_API_KEY is missing" time="0.005066132">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:63:22
+ ❯ withEnv tests/support/helpers/env.ts:35:20
+ ❯ withoutEnv tests/support/helpers/env.ts:58:10
+ ❯ tests/mastra/lib/env-validation.test.ts:54:13
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include never change default implicitly rule" time="0.000194138">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should throw clear error when OPENWEATHERMAP_API_KEY is missing" time="0.001973748">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:77:22
+ ❯ withEnv tests/support/helpers/env.ts:35:20
+ ❯ withoutEnv tests/support/helpers/env.ts:58:10
+ ❯ tests/mastra/lib/env-validation.test.ts:68:13
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should contain TEMPERATURE FORMATTING header" time="0.000396466">
+        <testcase classname="tests/mastra/lib/env-validation.test.ts" name="P0: Environment Validation &gt; FR25: Missing API Key Error &gt; should exit with non-zero code on missing required env var" time="0.000718085">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/lib/env-validation.test.ts:92:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should include unit display rules" time="0.000202175">
+    </testsuite>
+    <testsuite name="tests/mastra/lib/weatherApi.test.ts" timestamp="2026-01-02T12:02:46.076Z" hostname="MWDNs-MacBook-Pro.local" tests="8" failures="0" errors="0" skipped="0" time="0.00669506">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Successful Responses &gt; should return weather data for valid city" time="0.002602563">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should include conversion formula" time="0.000131743">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Successful Responses &gt; should include temp, conditions, humidity in response" time="0.000471831">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should contain TEMPERATURE CONVERSION header" time="0.000151044">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return CITY_NOT_FOUND for 404 response" time="0.000304086">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include explicit conversion patterns" time="0.000215467">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_KEY_INVALID for 401 response" time="0.000273685">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include contextual conversion patterns" time="0.000166722">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return RATE_LIMITED for 429 response" time="0.000262124">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include parsing rules" time="0.000188843">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_UNAVAILABLE for 500 response" time="0.000280745">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include fun facts for special values" time="0.000132805">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Error Code Mapping &gt; should return API_UNAVAILABLE for 503 response" time="0.000321349">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Feels-like temperature &gt; should contain FEELS-LIKE TEMPERATURE header" time="0.000114908">
+        <testcase classname="tests/mastra/lib/weatherApi.test.ts" name="WeatherAPI Client &gt; Timeout Handling &gt; should timeout after 5 seconds (NFR2)" time="0.000189284">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Feels-like temperature &gt; should include when to show feels-like" time="0.000160549">
+    </testsuite>
+    <testsuite name="tests/mastra/memory/persistence.test.ts" timestamp="2026-01-02T12:02:46.077Z" hostname="MWDNs-MacBook-Pro.local" tests="3" failures="3" errors="0" skipped="0" time="0.047189202">
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should persist working memory to mastra.db file" time="0.043865674">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:53:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather response format &gt; should contain WEATHER RESPONSE FORMAT header" time="0.000153411">
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should read persisted memory after simulated restart" time="0.000834411">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:75:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather response format &gt; should include response structure items" time="0.000163594">
+        <testcase classname="tests/mastra/memory/persistence.test.ts" name="P0: LibSQL Memory Persistence &gt; NFR13: Memory Persistence Across Restarts &gt; should use fixed resourceId &quot;cli-user&quot; for persistence" time="0.000629927">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/memory/persistence.test.ts:90:20
+            </failure>
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should contain AMBIGUOUS LOCATION HANDLING header" time="0.000126159">
+    </testsuite>
+    <testsuite name="tests/mastra/tools/convertTemperature.test.ts" timestamp="2026-01-02T12:02:46.079Z" hostname="MWDNs-MacBook-Pro.local" tests="21" failures="0" errors="0" skipped="0" time="0.006718148">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 0C to 32F (freezing point)" time="0.001403292">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should show default ambiguous cities when none provided" time="0.000164898">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 100C to 212F (boiling point)" time="0.000231391">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should use custom ambiguous cities when provided" time="0.00049067">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert -40C to -40F (equal point)" time="0.000174245">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should include clarification pattern" time="0.000165781">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 20C to 68F (room temperature)" time="0.000158364">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should include dont over-disambiguate rule" time="0.00013465">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Celsius to Fahrenheit &gt; should convert 37C to approximately 98.6F (body temperature)" time="0.000241175">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #4: Tool usage clarity &gt; should explain when to use each tool" time="0.000113424">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 32F to 0C (freezing point)" time="0.000186845">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #4: Tool usage clarity &gt; should include input and output for tools" time="0.000121432">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 212F to 100C (boiling point)" time="0.000128815">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template structure &gt; should have all major sections" time="0.000216027">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert -40F to -40C (equal point)" time="0.000112293">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template independence &gt; should render with minimal config" time="0.000268575">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 68F to 20C (room temperature)" time="0.000127274">
         </testcase>
-        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template independence &gt; should render without ambiguousCities" time="0.000174357">
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fahrenheit to Celsius &gt; should convert 98.6F to approximately 37C (body temperature)" time="0.000158758">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert +0°C to 32°F" time="0.000146649">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 100°C to 212°F" time="0.000088526">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert -40°C to -40°F" time="0.000073832">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 20°C to 68°F" time="0.000069366">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 37°C to 98.6°F" time="0.000065459">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 32°F to +0°C" time="0.000099451">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 212°F to 100°C" time="0.000067553">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert -40°F to -40°C" time="0.000168094">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 68°F to 20°C" time="0.000147697">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Fixture-based Conversions &gt; should convert 98.6°F to 37°C" time="0.000078768">
+        </testcase>
+        <testcase classname="tests/mastra/tools/convertTemperature.test.ts" name="convertTemperature Tool &gt; Rounding and Precision &gt; should round to 1 decimal place for display" time="0.000155181">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/tools/getCurrentWeather.test.ts" timestamp="2026-01-02T12:02:46.083Z" hostname="MWDNs-MacBook-Pro.local" tests="9" failures="9" errors="0" skipped="0" time="0.024355866">
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR5: Weather for Specific City &gt; should return formatted weather for valid city" time="0.0143816">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:52:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR5: Weather for Specific City &gt; should include temperature, conditions, and humidity in response" time="0.00093764">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:69:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR7: OpenWeatherMap Integration &gt; should call OpenWeatherMap API with correct parameters" time="0.000716465">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:94:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return CITY_NOT_FOUND for 404 response" time="0.000714389">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:112:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return API_KEY_INVALID for 401 response" time="0.000865204">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:128:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should return API_UNAVAILABLE for 5xx response" time="0.000693413">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:144:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; FR24: API Failure Graceful Message &gt; should handle network failure gracefully" time="0.002286023">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:160:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; NFR2: API Timeout (&lt;5s) &gt; should timeout after 5 seconds" time="0.000678193">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:191:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/getCurrentWeather.test.ts" name="P0: getCurrentWeather Tool &gt; NFR2: API Timeout (&lt;5s) &gt; should complete successfully within 5 seconds" time="0.000874345">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/getCurrentWeather.test.ts:210:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/tools/setDefaultCity.test.ts" timestamp="2026-01-02T12:02:46.087Z" hostname="MWDNs-MacBook-Pro.local" tests="3" failures="3" errors="0" skipped="0" time="0.014426393">
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR13: Set Default City &gt; should save city to working memory" time="0.010604003">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:48:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR13: Set Default City &gt; should return success when city is set" time="0.000764553">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:63:20
+            </failure>
+        </testcase>
+        <testcase classname="tests/mastra/tools/setDefaultCity.test.ts" name="P0: setDefaultCity Tool &gt; FR17: Confirm Preference Changes &gt; should return confirmation message with new city" time="0.000599257">
+            <failure message="expected true to be false // Object.is equality" type="AssertionError">
+AssertionError: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/mastra/tools/setDefaultCity.test.ts:80:20
+            </failure>
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/capabilities.test.ts" timestamp="2026-01-02T12:02:46.089Z" hostname="MWDNs-MacBook-Pro.local" tests="7" failures="0" errors="0" skipped="0" time="0.008063378">
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should contain CAPABILITIES header" time="0.004811925">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list weather information capability" time="0.000252134">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list preferences capability" time="0.000270687">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list conversion capability" time="0.000244267">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #1: Capabilities section content &gt; should list advice capability" time="0.000178264">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #3: Output structure matches original &gt; should have bullet points for each capability" time="0.000295021">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/capabilities.test.ts" name="P0: capabilities.njk template &gt; AC #5: Template independence &gt; should render without variables from other templates" time="0.000174163">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/conversationContext.test.ts" timestamp="2026-01-02T12:02:46.090Z" hostname="MWDNs-MacBook-Pro.local" tests="13" failures="0" errors="0" skipped="0" time="0.013923619">
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should contain CONVERSATION CONTEXT header" time="0.009029501">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should include context awareness rules" time="0.000259249">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Conversation context content &gt; should include follow-up question handling" time="0.000206238">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should contain OFF-TOPIC HANDLING section" time="0.000210819">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should include example redirections" time="0.000218063">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Off-topic handling &gt; should include redirection rules" time="0.000273904">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should contain UNCLEAR INPUT HANDLING section" time="0.000277806">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should include example responses to gibberish" time="0.00016925">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Unclear input handling &gt; should include handling rules" time="0.000168799">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Empty input handling &gt; should contain EMPTY INPUT section" time="0.000185402">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #2: Empty input handling &gt; should include empty input response pattern" time="0.000129603">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #4: Output structure &gt; should have all major sections" time="0.000181098">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/conversationContext.test.ts" name="P0: conversationContext.njk template &gt; AC #5: Template independence &gt; should render without any config variables" time="0.00021201">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/errorHandling.test.ts" timestamp="2026-01-02T12:02:46.093Z" hostname="MWDNs-MacBook-Pro.local" tests="9" failures="0" errors="0" skipped="0" time="0.017184183">
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should contain ERROR HANDLING header" time="0.009803122">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include city not found error pattern" time="0.002453118">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include API unavailable error pattern" time="0.000252817">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include rate limited error pattern" time="0.000224602">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include missing API key error pattern" time="0.000614426">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #1: Error handling content &gt; should include rule to never expose technical details" time="0.000233084">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in error handling principles" time="0.000216955">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #3: Agent name substitution &gt; should use default agentName when using defaultConfig" time="0.000192803">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/errorHandling.test.ts" name="P0: errorHandling.njk template &gt; AC #5: Template independence &gt; should render with only required variables" time="0.00026001">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/identity.test.ts" timestamp="2026-01-02T12:02:46.094Z" hostname="MWDNs-MacBook-Pro.local" tests="10" failures="0" errors="0" skipped="0" time="0.131129017">
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #1: Identity section structure &gt; should contain IDENTITY section with configurable values" time="0.126271605">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #1: Identity section structure &gt; should contain GREETING RESPONSES section" time="0.000401164">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute agentName throughout" time="0.000637627">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute agentRole" time="0.000213148">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #2: Variable substitution &gt; should substitute personality" time="0.000198769">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #3: Custom greetings &gt; should render custom greetings when provided" time="0.00036456">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #4: Default greetings &gt; should use default greetings when none provided" time="0.000177497">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #4: Default greetings &gt; should include agentName in default greetings" time="0.00014378">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #5: Output structure matches original &gt; should maintain the persona introduction" time="0.000180577">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/identity.test.ts" name="P0: identity.njk template &gt; AC #5: Output structure matches original &gt; should instruct when to respond warmly" time="0.000192349">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/index.test.ts" timestamp="2026-01-02T12:02:46.096Z" hostname="MWDNs-MacBook-Pro.local" tests="22" failures="0" errors="0" skipped="0" time="0.169674945">
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #1: Nunjucks environment configuration &gt; should configure environment with autoescape disabled" time="0.00159632">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #1: Nunjucks environment configuration &gt; should resolve templates from the templates directory" time="0.117721792">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #2: Markdown extension registration &gt; should have markdown extension available" time="0.001209822">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should merge partial config with defaults" time="0.000731874">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should include personality from defaults" time="0.000334073">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render defaultUnit correctly" time="0.000557383">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render optional greetings when provided" time="0.000392468">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #3: buildInstructions with partial config &gt; should render ambiguousCities when provided" time="0.000354219">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #4: buildInstructions with no arguments &gt; should use all default values" time="0.000447575">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #4: buildInstructions with no arguments &gt; should not include optional fields when not provided" time="0.000461672">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; AC #5: ESM path resolution &gt; should correctly resolve template paths in ESM environment" time="0.000381444">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Re-exports &gt; should re-export defaultConfig" time="0.00017577">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Re-exports &gt; should re-export mergeConfig" time="0.000206821">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Temperature unit ranges &gt; should show Celsius temperature ranges when defaultUnit is celsius" time="0.037189696">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Temperature unit ranges &gt; should show Fahrenheit temperature ranges when defaultUnit is fahrenheit" time="0.001690679">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Section presence &gt; should include all major section headers" time="0.000628657">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain unsubstituted Nunjucks variables" time="0.000528009">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain undefined or null values" time="0.000378837">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; No rendering artifacts &gt; should not contain Nunjucks template syntax in output" time="0.000516143">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; Combined configuration &gt; should handle multiple config options together" time="0.000463146">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; defaultConfig values &gt; should have expected default values" time="0.000847244">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/index.test.ts" name="P0: Template Engine Setup &gt; defaultConfig values &gt; should not have optional properties set" time="0.00017924">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/intentClassification.test.ts" timestamp="2026-01-02T12:02:46.100Z" hostname="MWDNs-MacBook-Pro.local" tests="22" failures="0" errors="0" skipped="0" time="0.014162419">
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Intent categories &gt; should contain INTENT CLASSIFICATION header" time="0.007199691">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Intent categories &gt; should list all intent categories" time="0.000466769">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Weather query indicators &gt; should include weather query patterns" time="0.000350236">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Weather query indicators &gt; should include contextual query examples" time="0.000228415">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include preference update patterns" time="0.000228162">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include unit preference patterns" time="0.000203912">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Preference update indicators &gt; should include name sharing patterns" time="0.000155933">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should include disambiguation section" time="0.000128048">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should explain ambiguous city name handling" time="0.000209671">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Disambiguation rules &gt; should include &quot;I&apos;m in [city]&quot; disambiguation" time="0.000200841">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Multi-preference handling &gt; should include multi-preference section" time="0.000187287">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Multi-preference handling &gt; should include example of multiple preferences" time="0.000143704">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Tricky cases &gt; should include tricky cases section" time="0.000122964">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Tricky cases &gt; should include weather at home example" time="0.000118621">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Never assume rules &gt; should include NEVER ASSUME section" time="0.000126701">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Never assume rules &gt; should list what not to assume" time="0.000139742">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Ambiguous location handling &gt; should include ambiguous location section" time="0.000131954">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Ambiguous location handling &gt; should list known ambiguous cities" time="0.000181424">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Informal language understanding &gt; should include informal language section" time="0.000113094">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #1: Informal language understanding &gt; should include casual expressions" time="0.000116045">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #2: Maintainability &gt; should use clear section headers" time="0.000284723">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/intentClassification.test.ts" name="P0: intentClassification.njk template &gt; AC #5: Template independence &gt; should render without any config variables" time="0.000115895">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/main.test.ts" timestamp="2026-01-02T12:02:46.104Z" hostname="MWDNs-MacBook-Pro.local" tests="15" failures="0" errors="0" skipped="0" time="0.175139433">
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should render complete instructions with opening" time="0.027874642">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should include all section templates in correct order" time="0.00074848">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #1: Template structure and includes &gt; should include sections in logical order" time="0.000580139">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #2: Content completeness &gt; should produce output of substantial length" time="0.000390541">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #2: Content completeness &gt; should include key content from each template" time="0.000722556">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #3: Template modularity &gt; should include identity template content" time="0.00035797">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #3: Template modularity &gt; should include weather advice template content" time="0.000349019">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #4: Section separation &gt; should have proper section headers" time="0.000546148">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should substitute agentName throughout all templates" time="0.000420145">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should substitute defaultUnit in weather advice" time="0.000794987">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; AC #5: Variable inheritance &gt; should pass all config values to included templates" time="0.000592619">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Custom config options &gt; should include custom greetings when provided" time="0.002986114">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Custom config options &gt; should include custom ambiguous cities when provided" time="0.000379041">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Default config rendering &gt; should render successfully with no config" time="0.000405117">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/main.test.ts" name="P0: main.njk integration &gt; Default config rendering &gt; should use default values when no config provided" time="0.000436106">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/preferenceManagement.test.ts" timestamp="2026-01-02T12:02:46.106Z" hostname="MWDNs-MacBook-Pro.local" tests="27" failures="0" errors="0" skipped="0" time="0.052879607">
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should contain DEFAULT CITY MANAGEMENT header" time="0.028165027">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should include setting patterns" time="0.005622722">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Default city management &gt; should include when NOT to set default" time="0.000426636">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should contain UNIT PREFERENCE MANAGEMENT header" time="0.000199222">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include Fahrenheit indicators" time="0.000244087">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include Celsius indicators" time="0.00032611">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Unit preference management &gt; should include confirmation messages" time="0.000186268">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should contain USER NAME MANAGEMENT header" time="0.000147478">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should include name recognition patterns" time="0.000194064">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: User name management &gt; should include name usage guidelines" time="0.000248402">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should contain SESSION GREETING RULES header" time="0.000156067">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include returning user greeting" time="0.000275558">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include new session greeting" time="0.000154735">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #1: Session greeting rules &gt; should include new user greeting" time="0.001177138">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #2: Preference operations &gt; should explain set operations for each preference type" time="0.00063906">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #2: Preference operations &gt; should explain update operations" time="0.000179771">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in greetings" time="0.000146338">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should use default agentName (Sunny) with defaultConfig" time="0.000126848">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #3: Agent name substitution &gt; should substitute agentName in multiple places" time="0.00032723">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #4: Working memory usage &gt; should explain working memory schema" time="0.000388818">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #4: Working memory usage &gt; should explain working memory usage for personalization" time="0.000192017">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Multi-preference handling &gt; should contain MULTI-PREFERENCE HANDLING section" time="0.000140531">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Multi-preference handling &gt; should include examples of multiple preferences" time="0.000164308">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Confirmation messages &gt; should contain CONFIRMATION MESSAGES section" time="0.000130296">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; AC #5: Confirmation messages &gt; should include confirmation patterns for all preference types" time="0.009841432">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; Template structure &gt; should have all major sections" time="0.000336914">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/preferenceManagement.test.ts" name="P0: preferenceManagement.njk template &gt; Template independence &gt; should render with only required variables" time="0.000292075">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/responseFormatting.test.ts" timestamp="2026-01-02T12:02:46.111Z" hostname="MWDNs-MacBook-Pro.local" tests="8" failures="0" errors="0" skipped="0" time="0.015157034">
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain RESPONSE FORMATTING header" time="0.010055821">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain temperature display rules" time="0.000300566">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain weather conditions guidelines" time="0.001522336">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #2: Response formatting content &gt; should contain contextual advice reference" time="0.000236863">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should show Celsius when defaultUnit is celsius" time="0.00024574">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should show Fahrenheit when defaultUnit is fahrenheit" time="0.000220248">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #4: Unit-aware rendering &gt; should use the defaultUnit variable in output" time="0.000313111">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/responseFormatting.test.ts" name="P0: responseFormatting.njk template &gt; AC #5: Template independence &gt; should render independently of identity template" time="0.000186961">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/types.test.ts" timestamp="2026-01-02T12:02:46.113Z" hostname="MWDNs-MacBook-Pro.local" tests="11" failures="0" errors="0" skipped="0" time="0.014265774">
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should have all required properties in defaultConfig" time="0.0024796">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should allow optional properties to be undefined" time="0.000301818">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #1: WeatherAgentConfig interface &gt; should only allow valid unit values" time="0.000233333">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #2: defaultConfig export &gt; should satisfy WeatherAgentConfig interface" time="0.002283207">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should merge partial config with defaults" time="0.000732489">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should override multiple properties" time="0.002957988">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should return defaults when no partial provided" time="0.000238538">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #3: Partial config merging &gt; should return defaults when undefined provided" time="0.00016875">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #4: TypeScript strict mode compatibility &gt; should create valid config with all required fields" time="0.000315018">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #4: TypeScript strict mode compatibility &gt; should allow optional fields to be set" time="0.000275334">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/types.test.ts" name="P0: Template Configuration Types &gt; AC #5: Config extension &gt; should support conditional rendering based on optional properties" time="0.000158851">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/weatherAdvice.test.ts" timestamp="2026-01-02T12:02:46.114Z" hostname="MWDNs-MacBook-Pro.local" tests="23" failures="0" errors="0" skipped="0" time="0.107332665">
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should show Celsius ranges when defaultUnit is celsius" time="0.016305651">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should show Fahrenheit ranges when defaultUnit is fahrenheit" time="0.001944073">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should not show Fahrenheit ranges when defaultUnit is celsius" time="0.000460221">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #1, #2: tempAdvice macro with unit switching &gt; should not show Celsius ranges when defaultUnit is fahrenheit" time="0.000293922">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #3: Temperature ranges &gt; should include all temperature categories" time="0.000412606">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #3: Temperature ranges &gt; should include advice for each temperature range" time="0.00034294">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should contain PRECIPITATION ADVICE header" time="0.0002108">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include rain advice" time="0.000217885">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include thunderstorm advice" time="0.000230543">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #4: Precipitation advice &gt; should include snow advice" time="0.000296172">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should contain SPECIAL CONDITIONS header" time="0.000187793">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include sunny/clear advice" time="0.000205434">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include windy advice with thresholds" time="0.000218743">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include humidity advice" time="0.000229774">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #5: Special conditions &gt; should include fog/mist advice" time="0.000200313">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should contain COMBINING CONDITIONS header" time="0.000167724">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include common combinations" time="0.00023562">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include priority rules" time="0.000202674">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; AC #6: Combining conditions &gt; should include advice placement guidance" time="0.000205796">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template structure &gt; should have all major sections" time="0.000244858">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template structure &gt; should contain header for the section" time="0.000153182">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template independence &gt; should render with minimal config (defaults to celsius)" time="0.000197551">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherAdvice.test.ts" name="P0: weatherAdvice.njk template &gt; Template independence &gt; should use celsius as default when no unit specified" time="0.08173629">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/agents/templates/weatherHandling.test.ts" timestamp="2026-01-02T12:02:46.118Z" hostname="MWDNs-MacBook-Pro.local" tests="31" failures="0" errors="0" skipped="0" time="0.068169358">
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should contain TOOL USAGE header" time="0.056914511">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include getCurrentWeather tool" time="0.000336834">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include setDefaultCity tool" time="0.000499053">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include setPreferredUnits tool" time="0.000238731">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Tool usage rules &gt; should include convertTemperature tool" time="0.000206902">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should contain WEATHER QUERY HANDLING header" time="0.000213771">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include city specified handling" time="0.000198483">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include no city specified handling" time="0.000172688">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather query handling &gt; should include never change default implicitly rule" time="0.000191629">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should contain TEMPERATURE FORMATTING header" time="0.000190917">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should include unit display rules" time="0.000177803">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Temperature formatting &gt; should include conversion formula" time="0.000139152">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should contain TEMPERATURE CONVERSION header" time="0.000147623">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include explicit conversion patterns" time="0.000192807">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include contextual conversion patterns" time="0.00020498">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include parsing rules" time="0.000236746">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1, #5: Temperature conversion &gt; should include fun facts for special values" time="0.002080713">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Feels-like temperature &gt; should contain FEELS-LIKE TEMPERATURE header" time="0.000195715">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Feels-like temperature &gt; should include when to show feels-like" time="0.000201386">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather response format &gt; should contain WEATHER RESPONSE FORMAT header" time="0.000139823">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #1: Weather response format &gt; should include response structure items" time="0.000206068">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should contain AMBIGUOUS LOCATION HANDLING header" time="0.000144537">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should show default ambiguous cities when none provided" time="0.000164528">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should use custom ambiguous cities when provided" time="0.000423009">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should include clarification pattern" time="0.000145513">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #2, #3: Ambiguous location handling &gt; should include dont over-disambiguate rule" time="0.000123391">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #4: Tool usage clarity &gt; should explain when to use each tool" time="0.000109336">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; AC #4: Tool usage clarity &gt; should include input and output for tools" time="0.000118855">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template structure &gt; should have all major sections" time="0.000214557">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template independence &gt; should render with minimal config" time="0.000124787">
+        </testcase>
+        <testcase classname="tests/mastra/agents/templates/weatherHandling.test.ts" name="P0: weatherHandling.njk template &gt; Template independence &gt; should render without ambiguousCities" time="0.000141097">
+        </testcase>
+    </testsuite>
+    <testsuite name="tests/mastra/lib/storage/supabaseStore.test.ts" timestamp="2026-01-02T12:02:46.123Z" hostname="MWDNs-MacBook-Pro.local" tests="10" failures="0" errors="0" skipped="0" time="0.010206213">
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; resourceIdToUuid helper &gt; should convert string resourceId to deterministic UUID" time="0.00359249">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; resourceIdToUuid helper &gt; should return same UUID for already valid UUID input" time="0.00033309">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; resourceIdToUuid helper &gt; should produce different UUIDs for different resourceIds" time="0.000940645">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Working Memory JSON &lt;-&gt; Normalized Mapping &gt; should correctly map working memory fields to database columns" time="0.000281006">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Working Memory JSON &lt;-&gt; Normalized Mapping &gt; should reconstruct working memory from database row" time="0.000440614">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Working Memory JSON &lt;-&gt; Normalized Mapping &gt; should use default celsius when preferences not found" time="0.000296945">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Working Memory JSON &lt;-&gt; Normalized Mapping &gt; should handle all null values from database" time="0.000214249">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; StorageResourceType format &gt; should return correct StorageResourceType structure" time="0.000488271">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Partial updates preservation &gt; should preserve existing values when updating only specific fields" time="0.001150782">
+        </testcase>
+        <testcase classname="tests/mastra/lib/storage/supabaseStore.test.ts" name="SupabaseStore &gt; Partial updates preservation &gt; should handle undefined vs null correctly" time="0.000454854">
         </testcase>
     </testsuite>
 </testsuites>

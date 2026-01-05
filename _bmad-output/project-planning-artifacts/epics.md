@@ -165,6 +165,13 @@ This epic is a **technical refactoring** that doesn't add new functional require
 
 **Dependencies:** Epic 1-4 complete
 
+### Epic 6: Database Migration to Supabase
+**User Outcome:** User data is stored in normalized Supabase PostgreSQL tables, enabling multi-consumer access.
+
+This epic migrates from LibSQL to Supabase with Drizzle ORM for type-safe database operations.
+
+**Dependencies:** Epic 1-4 complete
+
 ## Epic 1: Foundation & Core Agent Setup
 
 **User Outcome:** Developer can run the CLI and have a basic agent conversation with streaming responses.
@@ -738,4 +745,195 @@ So that **template rendering is verified and regressions are caught**.
 **When** I run `npm test`
 **Then** all template tests pass
 **And** no regressions in existing tests
+
+## Epic 6: Database Migration to Supabase
+
+**User Outcome:** User data (preferences, name, default city) is stored in normalized Supabase PostgreSQL tables, enabling multi-consumer access from other agents, mobile apps, and web services.
+
+This epic migrates from LibSQL file-based storage to Supabase PostgreSQL with Drizzle ORM, using a custom SupabaseStore class that extends PostgresStore. User data is normalized into separate `users` and `user_preferences` tables instead of Mastra's default JSON blob.
+
+**Dependencies:** Epic 1-4 complete (working agent with preferences)
+
+**Architecture Reference:** See "Database Migration: LibSQL to Supabase (Phase 2)" section in architecture.md
+
+### Story 6.1: Setup Drizzle Schema and Database Client
+
+As a **developer**,
+I want **Drizzle ORM configured with schema definitions for users and preferences tables**,
+So that **I have type-safe database access for custom tables**.
+
+**Acceptance Criteria:**
+
+**Given** the project needs Supabase integration
+**When** I create `src/db/schema.ts`
+**Then** it defines:
+- `weatherSchema` using `pgSchema('weather')`
+- `users` table with: id (UUID PK), username (TEXT), location (TEXT), created_at, updated_at
+- `userPreferences` table with: id (UUID PK), user_id (UUID FK to users), units (TEXT), created_at, updated_at
+**And** `userPreferences.userId` has a unique constraint and CASCADE delete
+
+**Given** the schema is defined
+**When** I create `src/db/index.ts`
+**Then** it initializes a pg Pool with `SUPABASE_DATABASE_URL`
+**And** exports a configured Drizzle instance with the schema
+
+**Given** Drizzle Kit is needed for migrations
+**When** I create `drizzle.config.ts`
+**Then** it configures:
+- Schema path: `./src/db/schema.ts`
+- Output path: `./drizzle`
+- Dialect: `postgresql`
+- DB credentials from `SUPABASE_DATABASE_URL`
+
+### Story 6.2: Create Database Tables in Supabase
+
+As a **developer**,
+I want **the `weather` schema and tables created in Supabase**,
+So that **user data has a place to be stored**.
+
+**Acceptance Criteria:**
+
+**Given** Drizzle schema is defined and config exists
+**When** I run `npm run db:generate`
+**Then** migration files are generated in `./drizzle/` directory
+
+**Given** migration files are generated
+**When** I run `npm run db:push`
+**Then** the `weather` schema is created in Supabase
+**And** `weather.users` table is created with correct columns and constraints
+**And** `weather.user_preferences` table is created with FK to users
+**And** no errors occur during migration
+
+**Given** the tables are created
+**When** I check Supabase dashboard or run `npm run db:studio`
+**Then** I can see the tables and their structure
+
+### Story 6.3: Implement SupabaseStore Class
+
+As a **developer**,
+I want **a custom storage adapter that extends PostgresStore and uses Drizzle for user data**,
+So that **Mastra's memory system works with normalized tables**.
+
+**Acceptance Criteria:**
+
+**Given** Drizzle is configured
+**When** I create `src/mastra/lib/storage/supabaseStore.ts`
+**Then** it exports `SupabaseStore` class extending `PostgresStore`
+**And** the constructor accepts `{ connectionString: string }`
+**And** it initializes a Drizzle instance for custom queries
+
+**Given** SupabaseStore is implemented
+**When** `getResourceById({ resourceId })` is called with a valid UUID
+**Then** it queries `weather.users` LEFT JOIN `weather.user_preferences`
+**And** reconstructs workingMemory JSON: `{ default_city, user_name, preferred_units }`
+**And** returns `StorageResourceType` with id, workingMemory, createdAt, updatedAt
+**And** returns `null` if user not found
+
+**Given** SupabaseStore is implemented
+**When** `saveResource({ resource })` is called with a new user UUID
+**Then** it parses resource.workingMemory JSON
+**And** uses a Drizzle transaction to:
+  - INSERT into users (id, username, location)
+  - INSERT into user_preferences (user_id, units)
+**And** handles conflicts gracefully (ON CONFLICT DO NOTHING)
+**And** returns the saved resource via getResourceById
+
+**Given** SupabaseStore is implemented
+**When** `updateResource({ resourceId, workingMemory })` is called
+**Then** it parses workingMemory JSON
+**And** uses a Drizzle transaction to:
+  - UPSERT users (preserve existing values for null fields)
+  - UPSERT user_preferences
+**And** uses `onConflictDoUpdate` for both tables
+**And** returns the updated resource via getResourceById
+
+### Story 6.4: Create Storage Export Barrel
+
+As a **developer**,
+I want **clean exports for the storage module**,
+So that **imports are simple and consistent**.
+
+**Acceptance Criteria:**
+
+**Given** SupabaseStore is implemented
+**When** I create `src/mastra/lib/storage/index.ts`
+**Then** it exports `SupabaseStore` class
+**And** exports any necessary types
+
+### Story 6.5: Integrate SupabaseStore with Memory Configuration
+
+As a **developer**,
+I want **the application to use SupabaseStore instead of LibSQLStore**,
+So that **user data is stored in Supabase**.
+
+**Acceptance Criteria:**
+
+**Given** SupabaseStore is ready
+**When** I update `src/mastra/lib/memory.ts`
+**Then** it imports `SupabaseStore` from `./storage/index.js`
+**And** replaces `LibSQLStore` with:
+```typescript
+export const storage = new SupabaseStore({
+  connectionString: process.env.SUPABASE_DATABASE_URL!,
+})
+```
+**And** removes `@mastra/libsql` import
+
+**Given** `SUPABASE_DATABASE_URL` is not set
+**When** the application starts
+**Then** it throws a clear error about missing environment variable
+
+### Story 6.6: Add Database Scripts to package.json
+
+As a **developer**,
+I want **convenient npm scripts for database operations**,
+So that **I can easily manage migrations and inspect the database**.
+
+**Acceptance Criteria:**
+
+**Given** Drizzle Kit is installed
+**When** I update `package.json`
+**Then** it includes scripts:
+```json
+{
+  "db:generate": "drizzle-kit generate",
+  "db:push": "drizzle-kit push",
+  "db:studio": "drizzle-kit studio"
+}
+```
+
+**Given** the scripts are added
+**When** I run `npm run db:studio`
+**Then** Drizzle Studio opens in browser for database inspection
+
+### Story 6.7: End-to-End Integration Testing
+
+As a **developer**,
+I want **to verify the complete integration works**,
+So that **I'm confident user preferences persist correctly in Supabase**.
+
+**Acceptance Criteria:**
+
+**Given** SupabaseStore is integrated
+**When** I run the CLI and set a default city ("Tokyo")
+**Then** the preference is stored in `weather.users.location`
+**And** I can verify in Supabase dashboard that the row exists
+
+**Given** I set preferred units to "fahrenheit"
+**When** I check the database
+**Then** `weather.user_preferences.units` shows "fahrenheit"
+
+**Given** I exit the CLI and restart it
+**When** I ask "What's the weather?"
+**Then** the agent uses my saved default city (Tokyo)
+**And** displays temperature in my preferred units (Fahrenheit)
+
+**Given** a new user UUID is provided
+**When** the agent saves their preferences
+**Then** both `users` and `user_preferences` rows are created atomically
+**And** no orphan records exist
+
+**Given** working memory is updated with partial data
+**When** only `default_city` is changed
+**Then** `username` and `units` retain their previous values
 

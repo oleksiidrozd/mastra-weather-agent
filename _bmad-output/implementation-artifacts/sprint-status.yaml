@@ -83,3 +83,14 @@ development_status:
   5-12-integrate-templates-with-weather-agent: done
   5-13-add-template-unit-tests: done
   epic-5-retrospective: optional
+
+  # Epic 6: Database Migration to Supabase
+  epic-6: done
+  6-1-setup-drizzle-schema-and-database-client: done
+  6-2-create-database-tables-in-supabase: done
+  6-3-implement-supabasestore-class: done
+  6-4-create-storage-export-barrel: done
+  6-5-integrate-supabasestore-with-memory-configuration: done
+  6-6-add-database-scripts-to-package-json: done
+  6-7-end-to-end-integration-testing: done
+  epic-6-retrospective: optional
